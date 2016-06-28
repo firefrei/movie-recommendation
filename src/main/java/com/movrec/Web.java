@@ -34,7 +34,7 @@ import com.movrec.Rec;
 
 //import com.sun.xml.bind.v2.schemagen.xmlschema.List;
 
-@Path("/hello")
+@Path("/rec")
 public class Web {
 	Rec recModel;
 	
