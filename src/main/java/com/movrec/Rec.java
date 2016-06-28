@@ -34,9 +34,9 @@ public class Rec {
 		
 		// SETUP
 		// Simon
-		String basepath = "/home/bar/uni/master/s2/Big_Data_Praktikum/";
+		//String basepath = "/home/bar/uni/master/s2/Big_Data_Praktikum/";
 		// Matze
-		//String basepath = "/Users/mat/Downloads/";
+		String basepath = "/Users/mat/Workspaces/Eclipse/MovRecTwo/WebContent/html/";
 			
 	    SparkConf conf = new SparkConf().setAppName("Movie Recommendation");
 	    conf.setMaster("local[2]");
@@ -71,6 +71,27 @@ public class Rec {
 	    System.out.println("Done");
 	    sc.close();
 	  }
+	
+	public Rec() {
+		// SETUP
+		// Simon
+		//String basepath = "/home/bar/uni/master/s2/Big_Data_Praktikum/";
+		// Matze
+		//String basepath = "/Users/mat/Workspaces/Eclipse/MovRecTwo/WebContent/html/";
+			
+	    SparkConf conf = new SparkConf().setAppName("Movie Recommendation");
+	    conf.setMaster("local[2]");
+	    sc = new JavaSparkContext(conf);
+
+	    // Load and parse the data
+	    movies = parseCSVFile(getClass().getClassLoader().getResource("ml-latest-small/movies.csv").getFile());
+	    links = parseCSVFile(getClass().getClassLoader().getResource("ml-latest-small/links.csv").getFile());
+	    ratings = parseRatings(getClass().getClassLoader().getResource("ml-latest-small/ratings.csv").getFile(), sc);
+	    
+	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
+	    System.out.println("Done");
+	    sc.close();
+	}
 	  
 		// Parse the given CSV file and return a JavaRDD containing the ratings.
 		public static JavaRDD<Rating> parseRatings(String dataPath, JavaSparkContext sc) {
@@ -123,7 +144,7 @@ public class Rec {
 		}
 
 		// Returns n random movies + movie information.
-		public static HashMap<Integer,List<String>> getRatingMovies(int n) {
+		public HashMap<Integer,List<String>> getRatingMovies(int n) {
 			HashMap<Integer,List<String>> ratingMovies = new HashMap<Integer,List<String>>();
 			Random generator = new Random();
 			Set<Integer> movIds = movies.keySet();
@@ -140,7 +161,7 @@ public class Rec {
 
 		// Add User ratings to the data set. key:movieId, value:rating
 		// Returns recommended movies. key:movieId, value:movietitle,genre,rating,imdId
-		public static Map<Integer,List<String>> addUserRatings(Map<Integer,Double> userRatings){
+		public Map<Integer,List<String>> addUserRatings(Map<Integer,Double> userRatings){
 			Iterator<Map.Entry<Integer,Double>> it = userRatings.entrySet().iterator();
 			while(it.hasNext()) {
 				Map.Entry<Integer,Double> pair = (Map.Entry<Integer,Double>)it.next();
@@ -173,7 +194,7 @@ public class Rec {
 		}
 
 		// Recommend n movies.
-		public static Rating[] recommendMovies(int n) {
+		public Rating[] recommendMovies(int n) {
 			
 			// Build the recommendation model using ALS
 		    int rank = 10;

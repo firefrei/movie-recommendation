@@ -1,10 +1,18 @@
 package com.movrec;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URLDecoder;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
@@ -22,10 +30,17 @@ import javax.ws.rs.core.Response;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import com.movrec.Rec;
+
 //import com.sun.xml.bind.v2.schemagen.xmlschema.List;
 
 @Path("/hello")
 public class Web {
+	Rec recModel;
+	
+	public Web() {
+		recModel = new Rec();
+	}
 	
 	@GET  
 	@Path("/hj")
@@ -52,15 +67,13 @@ public class Web {
 	public Response getMoviesForRating() {
 		/*  
 		 * Movie-ID, Movie-Title, -Genre, IMDB-ID,  */
-		ArrayList<String> foo = new ArrayList<String>();
-		foo.add("A");
-		foo.add("B");
-		foo.add("C");
 
-		String json = new Gson().toJson(foo );
-		/*Rec recModel = new Rec();
-		// Returns n movies to rate. key:movieId, value:movietitle,genre,imdbId
-		Map<Integer,List<String>> movies = recModel.getRatingMovies(5);*/
+		/*
+		// Returns n movies to rate. key:movieId, value:movietitle,genre,imdbId*/
+		System.out.println("getMoviesForRating");
+		Map<Integer,List<String>> movies = recModel.getRatingMovies(5);
+		System.out.println("->Gotmovies");
+		String json = new Gson().toJson(movies);
 		
 		// CALL SIMON 
 		// -> Get Dict/Map with Key:MovieID and Value:List with other Attributes
@@ -107,7 +120,7 @@ public class Web {
 		// CALL SIMON 
 		// Not implemented.
 		// Rec recModel = new Rec();
-		// recModel.getTopMovies(n);
+		//recModel.getTopMovies(20);
 		// -> Get Dict/Map with Key:MovieID and Value:List with other Attributes (including ranking!)
 		// -> Pass over Int:Number of wanted movies
 		
@@ -145,6 +158,4 @@ public class Web {
 //		return Response.status(200).entity(output).build();
 //
 //	}
-
-
 }
