@@ -20,7 +20,7 @@ public class Web_Index extends HttpServlet {
         throws ServletException, IOException
     {
         String filename = URLDecoder.decode(request.getPathInfo().substring(1), "UTF-8");
-        java.net.URL res = getClass().getClassLoader().getResource("index.html");
+        java.net.URL res = getClass().getClassLoader().getResource("web/index.html");
         File file = new File(res.getFile());
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));
@@ -29,3 +29,5 @@ public class Web_Index extends HttpServlet {
     }
 
 }
+
+
