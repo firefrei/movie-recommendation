@@ -1,6 +1,9 @@
 package com.movrec;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
@@ -19,7 +22,7 @@ import javax.ws.rs.core.Response;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import com.sun.xml.bind.v2.schemagen.xmlschema.List;
+//import com.sun.xml.bind.v2.schemagen.xmlschema.List;
 
 @Path("/hello")
 public class Web {
@@ -55,6 +58,9 @@ public class Web {
 		foo.add("C");
 
 		String json = new Gson().toJson(foo );
+		/*Rec recModel = new Rec();
+		// Returns n movies to rate. key:movieId, value:movietitle,genre,imdbId
+		Map<Integer,List<String>> movies = recModel.getRatingMovies(5);*/
 		
 		// CALL SIMON 
 		// -> Get Dict/Map with Key:MovieID and Value:List with other Attributes
@@ -74,7 +80,9 @@ public class Web {
 		/* IN: Movie-ID, Rating (0.5-5), ratedMovieIds
 		 * OUT:  
 		 * */
-	
+		/*Rec recModel = new Rec();
+		Map<Integer,Double> userRatings = new HashMap();
+		Map<Integer,List<String>> recommendations = recModel.addUserRatings(userRatings);*/
 		
 		// CALL SIMON -> returns result and backup-items (if duplicates)
 		// -> Pass over Dict/Map with Key:MovieId and Value:rating
@@ -97,6 +105,9 @@ public class Web {
 		String json = new Gson().toJson(foo );
 		
 		// CALL SIMON 
+		// Not implemented.
+		// Rec recModel = new Rec();
+		// recModel.getTopMovies(n);
 		// -> Get Dict/Map with Key:MovieID and Value:List with other Attributes (including ranking!)
 		// -> Pass over Int:Number of wanted movies
 		
