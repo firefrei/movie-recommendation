@@ -1,0 +1,31 @@
+#content-area {
+	margin-top: 100px;
+}
+
+.carousel-caption img.poster {
+	/*min-width: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto; */
+	
+	vertical-align: middle;
+	max-height: 500px;
+}
+
+.carousel-caption {
+	display: table;
+	width: 80%;
+	padding-right: 15%;
+}
+
+.carousel-caption .image {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+.carousel-caption .info {
+	display: table-cell;
+	vertical-align: middle;
+}
+
