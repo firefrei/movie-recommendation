@@ -86,22 +86,28 @@ public class Web {
 	@Path("/setMoviesForRating")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public Response setMoviesForRating(@FormParam("movieID") String movieID,
-		      @FormParam("rating") Double rating,
-		      @FormParam("ratedMovieIds") String ratedMovieIds
+	public Response setMoviesForRating(@FormParam("ratingData") String ratingData
 		    ) {
 		/* IN: Movie-ID, Rating (0.5-5), ratedMovieIds
 		 * OUT:  
-		 * */
-		/*Rec recModel = new Rec();
+		 * 
+		
+		-CALL SIMON -> returns result and backup-items (if duplicates)
+		 -> Pass over Dict/Map with Key:MovieId and Value:rating
+		- CHECK HERE: duplicates -> remove them if needed
+		
+		Rec recModel = new Rec();
 		Map<Integer,Double> userRatings = new HashMap();
 		Map<Integer,List<String>> recommendations = recModel.addUserRatings(userRatings);*/
 		
-		// CALL SIMON -> returns result and backup-items (if duplicates)
-		// -> Pass over Dict/Map with Key:MovieId and Value:rating
-		// CHECK HERE: duplicates -> remove them if needed
+		Map<Integer, Double> userRatings = new HashMap<Integer, Double>();
+		userRatings = new Gson().fromJson(ratingData, userRatings.getClass());
+		Map<Integer,List<String>> recommendations = recModel.addUserRatings(userRatings);
 		
-		return Response.status(200).entity("").build();
+		
+		String json = new Gson().toJson(recommendations);
+		
+		return Response.status(200).entity(json).build();
 	}
 	
 	
