@@ -28,24 +28,25 @@ public class Rec {
 	public static HashMap<Integer,List<String>> movies;
 	public static HashMap<Integer,List<String>> links;
 	public static JavaRDD<Rating> ratings;
+	public static List<Integer> movieIds;
 	public static JavaSparkContext sc;
 	
 	public static void main(String[] args) {
 		
 		// SETUP
 		// Simon
-		//String basepath = "/home/bar/uni/master/s2/Big_Data_Praktikum/";
+		String basepath = "/home/bar/uni/master/s2/Big_Data_Praktikum/";
 		// Matze
-		String basepath = "/Users/mat/Workspaces/Eclipse/MovRecTwo/WebContent/html/";
+		//String basepath = "/Users/mat/Workspaces/Eclipse/MovRecTwo/WebContent/html/";
 			
 	    SparkConf conf = new SparkConf().setAppName("Movie Recommendation");
 	    conf.setMaster("local[2]");
 	    sc = new JavaSparkContext(conf);
 
 	    // Load and parse the data
-	    movies = parseCSVFile(basepath + "ml-latest-small/movies1.csv");
-	    links = parseCSVFile(basepath + "ml-latest-small/links1.csv");
-	    ratings = parseRatings(basepath+"ml-latest-small/ratings1.csv", sc);
+	    movies = parseCSVFile(basepath + "ml-latest-small/movies.csv");
+	    links = parseCSVFile(basepath + "ml-latest-small/links.csv");
+	    ratings = parseRatings(basepath+"ml-latest-small/ratings.csv", sc);
 	    
 	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
 	   
@@ -120,6 +121,7 @@ public class Rec {
 				while ((line = br.readLine()) != null) {
 					String[] movie = line.split(",");
 					int movieId = Integer.parseInt(movie[0]);
+					movieIds.add(movieId);
 					
 					List<String> temp = Arrays.asList(movie);
 					List<String> information = new ArrayList(temp);
@@ -147,10 +149,8 @@ public class Rec {
 		public HashMap<Integer,List<String>> getRatingMovies(int n) {
 			HashMap<Integer,List<String>> ratingMovies = new HashMap<Integer,List<String>>();
 			Random generator = new Random();
-			Set<Integer> movIds = movies.keySet();
-			Iterator<Integer> it = movIds.iterator();
-			    for (int idx = 1; idx <= n; ++idx){
-			    	int key = it.next();
+			    for (int i = 1; i<= n; ++i){			    	
+			    	int key = movieIds.get(generator.nextInt(movieIds.size()-1));
 			    	List<String> randMovie = (List<String>) movies.get(key);
 			    	List<String> imdId = links.get(key);
 			    	randMovie.add(imdId.get(0));
