@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -44,6 +45,7 @@ public class Rec {
 	    sc = new JavaSparkContext(conf);
 
 	    // Load and parse the data
+	    movieIds = new ArrayList<Integer>();
 	    movies = parseCSVFile(basepath + "ml-latest-small/movies.csv");
 	    links = parseCSVFile(basepath + "ml-latest-small/links.csv");
 	    ratings = parseRatings(basepath+"ml-latest-small/ratings.csv", sc);
@@ -85,9 +87,11 @@ public class Rec {
 	    sc = new JavaSparkContext(conf);
 
 	    // Load and parse the data
+	    movieIds = new ArrayList<Integer>();
 	    movies = parseCSVFile(getClass().getClassLoader().getResource("ml-latest-small/movies.csv").getFile());
 	    links = parseCSVFile(getClass().getClassLoader().getResource("ml-latest-small/links.csv").getFile());
 	    ratings = parseRatings(getClass().getClassLoader().getResource("ml-latest-small/ratings.csv").getFile(), sc);
+
 	    
 	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
 	    System.out.println("Done");
@@ -112,7 +116,7 @@ public class Rec {
 		// Parse the given CSV file and returns a hashmap of the content.
 		public static HashMap<Integer,List<String>> parseCSVFile(String pathToCSV) {
 			HashMap<Integer,List<String>> movieInformation = new HashMap<Integer,List<String>>();
-			
+		    
 			BufferedReader br = null;
 			String line = "";
 			
@@ -121,6 +125,7 @@ public class Rec {
 				while ((line = br.readLine()) != null) {
 					String[] movie = line.split(",");
 					int movieId = Integer.parseInt(movie[0]);
+					System.out.println(movieId);
 					movieIds.add(movieId);
 					
 					List<String> temp = Arrays.asList(movie);
