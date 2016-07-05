@@ -76,12 +76,7 @@ public class Rec {
 	  }
 	
 	public Rec() {
-		// SETUP
-		// Simon
-		//String basepath = "/home/bar/uni/master/s2/Big_Data_Praktikum/";
-		// Matze
-		//String basepath = "/Users/mat/Workspaces/Eclipse/MovRecTwo/WebContent/html/";
-			
+		// Spark setup
 	    SparkConf conf = new SparkConf().setAppName("Movie Recommendation");
 	    conf.setMaster("local[2]");
 	    sc = new JavaSparkContext(conf);
@@ -92,9 +87,10 @@ public class Rec {
 	    links = parseCSVFile(getClass().getClassLoader().getResource("ml-latest-small/links.csv").getFile());
 	    ratings = parseRatings(getClass().getClassLoader().getResource("ml-latest-small/ratings.csv").getFile(), sc);
 
-	    
+	    // Output
 	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
 	    System.out.println("Done");
+	    
 	    sc.close();
 	}
 	  
@@ -148,6 +144,20 @@ public class Rec {
 				}
 			}
 			return movieInformation;
+		}
+		
+		// Returns n random movies + movie information.
+		public HashMap<Integer,List<String>> getRandomMovies(int n) {
+			HashMap<Integer,List<String>> randomMovies = new HashMap<Integer,List<String>>();
+			Random generator = new Random();
+			    for (int i = 1; i<= n; ++i){			    	
+			    	int key = movieIds.get(generator.nextInt(movieIds.size()-1));
+			    	List<String> randMovie = (List<String>) movies.get(key);
+			    	List<String> imdId = links.get(key);
+			    	randMovie.add(imdId.get(0));
+			    	randomMovies.put(key, randMovie);
+			    }
+			return randomMovies;
 		}
 
 		// Returns n random movies + movie information.

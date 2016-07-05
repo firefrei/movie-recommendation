@@ -61,6 +61,26 @@ public class Web {
 		
 		return Response.status(200).entity(json).build();
 	}
+	
+	
+	@GET  
+	@Path("/getRandomMovies")
+	public Response getRandomMovies() {
+		/*  
+		 * Movie-ID, Movie-Title, -Genre, IMDB-ID, Rating  */
+
+		/*
+		// Returns n movies to rate. key:movieId, value:movietitle,genre,imdbId*/
+		Map<Integer,List<String>> movies = recModel.getRandomMovies(9);
+		String json = new Gson().toJson(movies);
+		
+		// CALL SIMON 
+		// -> Get Dict/Map with Key:MovieID and Value:List with other Attributes
+		// -> Pass over Int:Number of wanted movies
+		
+		return Response.status(200).entity(json).build();
+	}
+	
 
 	@GET  
 	@Path("/getMoviesForRating")

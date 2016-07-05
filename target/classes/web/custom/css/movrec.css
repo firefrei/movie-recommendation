@@ -33,6 +33,7 @@ h4 {
 .carousel-caption .info {
 	display: table-cell;
 	vertical-align: middle;
+	padding: 10px 50px;
 }
 
 .featurette-divider {

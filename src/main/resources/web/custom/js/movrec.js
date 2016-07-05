@@ -86,7 +86,7 @@ function insertView_start() {
 	// Load dynamic content
 	$.ajax({
 		dataType: 'json',
-        url: base_url+"getMoviesForRating"
+        url: base_url+"getRandomMovies"
     }).then(function(data) {
     	var item_counter = 0;
     	jQuery.each(data, function(movieID, movieInfo) {
@@ -107,7 +107,7 @@ function insertView_start() {
 	    		html_carousel += '<img class="poster" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">';
 	    		html_carousel += '</div><div class="info"><h1>'+movieInfo[0]+'</h1>';
 	    		html_carousel += '<p class="desc"></p>';
-	    		html_carousel += '<p><a class="btn btn-lg btn-primary" href="#" role="button">View details</a></p>';
+	    		html_carousel += '<p>'+html_rating_stars(movieID)+ ' <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#movieModal_'+movieID+'">View details</button>';
 	    		html_carousel += '</div></div>';
 	    		html_carousel += '</div>';
 	    		html_carousel += '</div>';
