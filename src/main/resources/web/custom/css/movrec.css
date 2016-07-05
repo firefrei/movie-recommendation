@@ -36,6 +36,18 @@ h4 {
 	padding: 10px 50px;
 }
 
+.bubbles > div {
+	margin-bottom: 50px !important;
+}
+
+
+.modal-body {
+	padding: 15px 30px;
+}
+
+.featurette-heading {
+	margin-top: 30px;
+}
 .featurette-divider {
 	margin: 30px 0;
 }
@@ -48,16 +60,34 @@ h4 {
 
 .modal.movie-detail img {
 	float:right;
-	padding: 0 0 10px 10px;
+	padding: 0 20px 10px 20px;
 	max-width: 200px;
+	max-height: 100%;
+	vertical-align: middle;
 }
 
-button.submit-ratings {
-	width: 100%;
-	text-align: center;
-	margin: 70px 0 30px 0;
+
+button.btn-circle, 
+.btn-circle {
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	border: 1px solid gray;
+	background: rgba(204,204,204,0.5);
 }
+
+button.btn.btn-primary {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	padding-left: 10px;
+	text-align:center;
+	}
 
 footer {
 	margin: 30px 100px;
+}
+
+footer .info a {
+	color: inherit;
 }
