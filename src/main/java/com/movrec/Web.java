@@ -120,7 +120,7 @@ public class Web {
 		Map<Integer,Double> userRatings = new HashMap();
 		Map<Integer,List<String>> recommendations = recModel.addUserRatings(userRatings);*/
 		
-		Map<Integer, Double> userRatings = new HashMap<Integer, Double>();
+		Map<String, Double> userRatings = new HashMap<String, Double>();
 		userRatings = new Gson().fromJson(ratingData, userRatings.getClass());
 		Map<Integer,List<String>> recommendations = recModel.addUserRatings(userRatings);
 		

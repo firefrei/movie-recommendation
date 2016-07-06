@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
 
@@ -95,7 +96,7 @@ public class Rec {
 	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
 	    System.out.println("Done");
 	    
-	    sc.close();
+	    //sc.close();
 	}
 	  
 		// Parse the given CSV file and return a JavaRDD containing the ratings.
@@ -185,7 +186,18 @@ public class Rec {
 
 		// Add User ratings to the data set. key:movieId, value:rating
 		// Returns recommended movies. key:movieId, value:movietitle,genre,rating,imdId
-		public Map<Integer,List<String>> addUserRatings(Map<Integer,Double> userRatings){
+		public Map<Integer,List<String>> addUserRatings(Map<String,Double> userRatings){
+			for (Entry<String, Double> entry: userRatings.entrySet()) {
+				Integer myInt = Integer.parseInt(entry.getKey());
+				Double myDouble = entry.getValue();
+				
+				
+				Rating rating = new Rating(0,myInt, myDouble);
+				List<Rating> ratingList = Arrays.asList(rating);
+				JavaRDD<Rating> userRating = sc.parallelize(ratingList);
+				ratings = ratings.union(userRating);
+			}
+			/*
 			Iterator<Map.Entry<Integer,Double>> it = userRatings.entrySet().iterator();
 			while(it.hasNext()) {
 				Map.Entry<Integer,Double> pair = (Map.Entry<Integer,Double>)it.next();
@@ -197,9 +209,9 @@ public class Rec {
 /*				Iterator<Rating> itR = ratings.toLocalIterator();
 				while (itR.hasNext()) {
 					System.out.println(itR.next());
-				}*/
+				}
 				
-			}
+			}*/
 			Rating[] recommendedMovies = recommendMovies(2);
 			Map<Integer,List<String>> products = new HashMap<Integer, List<String>>();
 			

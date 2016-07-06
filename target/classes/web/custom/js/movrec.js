@@ -156,7 +156,7 @@ function insertView_ratings() {
 	var html_base = '<div class="container marketing">';
 	html_base += '<div>';
 	html_base += '<h4>Rate some movies to get recommendations</h4>';
-	html_base += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rateModal">Rate now!</button>';
+	html_base += '<button type="button" class="btn btn-circle" data-toggle="modal" data-target="#rateModal">Rate now!</button>';
 	html_base += '</div>';
 	html_base += '<div class="modal movie-detail fade" id="rateModal" tabindex="-1" role="dialog" aria-labelledby="rateModalLabel">';
 	html_base += '<div class="modal-dialog modal-lg" role="document">';
@@ -207,15 +207,15 @@ function insertView_ratings() {
     		$(".container.marketing .modal-body").append(html_modal);
     		
     		// Add movie to ratingsArray
-    		myRatingsArray[movieID] = 0;
-    		
+    		myRatingsArray[movieID] = 0.0;
+
     		// Load further information
     		insertMovieInfo(movieInfo[2], "movie_"+movieID, movieID);
     		$('.stars_'+movieID).barrating({
     	        theme: 'fontawesome-stars',
     	        readonly: false,
     	        onSelect: function(value, text, event) {
-    	        	myRatingsArray[movieID] = value;
+    	        	myRatingsArray[movieID] = parseFloat(value);
     	          }
     	      });
     		
@@ -259,10 +259,10 @@ function insertView_ratings() {
     		$("#rateModal").modal('hide');
     		
     		// post data
-    		var post_response = $.post(base_url+"setMoviesForRating", {'ratingData': JSON.stringify(myRatingsArray)});
-    		console.log(post_response);
+    		$.post(base_url+"setMoviesForRating", {'ratingData': JSON.stringify(myRatingsArray)}).done(function(data, statusText) {
+    		    // This block is optional, fires when the ajax call is complete
+    		});
     	});
- 
     });
 }
 

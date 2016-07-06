@@ -207,15 +207,15 @@ function insertView_ratings() {
     		$(".container.marketing .modal-body").append(html_modal);
     		
     		// Add movie to ratingsArray
-    		myRatingsArray[movieID] = 0;
-    		
+    		myRatingsArray[movieID] = 0.0;
+
     		// Load further information
     		insertMovieInfo(movieInfo[2], "movie_"+movieID, movieID);
     		$('.stars_'+movieID).barrating({
     	        theme: 'fontawesome-stars',
     	        readonly: false,
     	        onSelect: function(value, text, event) {
-    	        	myRatingsArray[movieID] = value;
+    	        	myRatingsArray[movieID] = parseFloat(value);
     	          }
     	      });
     		
