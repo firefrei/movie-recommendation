@@ -55,7 +55,6 @@ public class Rec {
 	    movieRatings = generateMovieRatings(basepath + "ml-latest-small/ratings.csv");
 	    
 	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
-	    System.out.println("foo");
 	   
 /*	    Map<Integer,Double> userR = new HashMap<Integer,Double>();
 	    userR.put(1, 4.0);
@@ -63,8 +62,7 @@ public class Rec {
 	    Map<Integer,List<String>> recMov = new HashMap<Integer,List<String>>();
 	    recMov = addUserRatings(userR);*/
 	    
-	    
-	    // Choose n random movies to rate.
+/*	    // Choose n random movies to rate.
 	    HashMap<Integer,List<String>> test = getRandomMovies(10);
 	    
 	    //Print the random movies.
@@ -74,7 +72,7 @@ public class Rec {
 	    	int key = it.next();
 	    	System.out.println(key);
 	    	System.out.println(test.get(key));
-	    }
+	    }*/
 	    	     
 	    System.out.println("Done");
 	    sc.close();
@@ -91,7 +89,7 @@ public class Rec {
 	    movies = parseCSVFile(getClass().getClassLoader().getResource("ml-latest-small/movies.csv").getFile());
 	    links = parseCSVFile(getClass().getClassLoader().getResource("ml-latest-small/links.csv").getFile());
 	    ratings = parseRatings(getClass().getClassLoader().getResource("ml-latest-small/ratings.csv").getFile(), sc);
-	    movieRatings = generateMovieRatings(basepath + "ml-latest-small/ratings.csv");
+	    movieRatings = generateMovieRatings(getClass().getClassLoader().getResource("ml-latest-small/ratings.csv").getFile());
 	    
 	    // Output
 	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
