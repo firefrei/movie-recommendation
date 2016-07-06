@@ -23,6 +23,8 @@ import org.apache.spark.mllib.recommendation.ALS;
 import org.apache.spark.mllib.recommendation.MatrixFactorizationModel;
 import org.apache.spark.mllib.recommendation.Rating;
 
+import akka.japi.Pair;
+
 
 public class Rec {
 
@@ -31,6 +33,7 @@ public class Rec {
 	public static JavaRDD<Rating> ratings;
 	public static List<Integer> movieIds;
 	public static JavaSparkContext sc;
+	public static Map<Integer,Double> movieRatings;
 	
 	public static void main(String[] args) {
 		
@@ -49,8 +52,10 @@ public class Rec {
 	    movies = parseCSVFile(basepath + "ml-latest-small/movies.csv");
 	    links = parseCSVFile(basepath + "ml-latest-small/links.csv");
 	    ratings = parseRatings(basepath+"ml-latest-small/ratings.csv", sc);
+	    movieRatings = generateMovieRatings(basepath + "ml-latest-small/ratings.csv");
 	    
 	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
+	    System.out.println("foo");
 	   
 /*	    Map<Integer,Double> userR = new HashMap<Integer,Double>();
 	    userR.put(1, 4.0);
@@ -60,16 +65,16 @@ public class Rec {
 	    
 	    
 	    // Choose n random movies to rate.
-	    //HashMap<Integer,List<String>> test = getRatingMovies(10);
+	    HashMap<Integer,List<String>> test = getRandomMovies(10);
 	    
 	    //Print the random movies.
-/*	    Set<Integer> keySet = test.keySet();
+	    Set<Integer> keySet = test.keySet();
 	    Iterator<Integer> it = keySet.iterator();
 	    while(it.hasNext()){
 	    	int key = it.next();
 	    	System.out.println(key);
 	    	System.out.println(test.get(key));
-	    }*/
+	    }
 	    	     
 	    System.out.println("Done");
 	    sc.close();
@@ -86,7 +91,8 @@ public class Rec {
 	    movies = parseCSVFile(getClass().getClassLoader().getResource("ml-latest-small/movies.csv").getFile());
 	    links = parseCSVFile(getClass().getClassLoader().getResource("ml-latest-small/links.csv").getFile());
 	    ratings = parseRatings(getClass().getClassLoader().getResource("ml-latest-small/ratings.csv").getFile(), sc);
-
+	    movieRatings = generateMovieRatings(basepath + "ml-latest-small/ratings.csv");
+	    
 	    // Output
 	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
 	    System.out.println("Done");
@@ -121,7 +127,6 @@ public class Rec {
 				while ((line = br.readLine()) != null) {
 					String[] movie = line.split(",");
 					int movieId = Integer.parseInt(movie[0]);
-					System.out.println(movieId);
 					movieIds.add(movieId);
 					
 					List<String> temp = Arrays.asList(movie);
@@ -147,7 +152,7 @@ public class Rec {
 		}
 		
 		// Returns n random movies + movie information.
-		public HashMap<Integer,List<String>> getRandomMovies(int n) {
+		public static HashMap<Integer,List<String>> getRandomMovies(int n) {
 			HashMap<Integer,List<String>> randomMovies = new HashMap<Integer,List<String>>();
 			Random generator = new Random();
 			    for (int i = 1; i<= n; ++i){			    	
@@ -155,6 +160,8 @@ public class Rec {
 			    	List<String> randMovie = (List<String>) movies.get(key);
 			    	List<String> imdId = links.get(key);
 			    	randMovie.add(imdId.get(0));
+			    	Double rating = (Double)movieRatings.get(key);
+			    	randMovie.add(rating.toString());
 			    	randomMovies.put(key, randMovie);
 			    }
 			return randomMovies;
@@ -220,5 +227,52 @@ public class Rec {
 			// Recommend n products to user 0
 		    Rating[] userProducts = model.recommendProducts(0,n);
 		    return userProducts;
+		}
+		// Generates the ratings for all movies.
+		public static Map<Integer,Double> generateMovieRatings(String pathToData) {
+			
+			Map<Integer,Pair<Integer,Double>> movieRatings = new HashMap<Integer,Pair<Integer,Double>>();
+			
+			BufferedReader br = null;
+			String line = "";
+			
+			try {
+				br = new BufferedReader(new FileReader(pathToData));
+				while ((line = br.readLine()) != null) {
+					String[] movie = line.split(",");
+					int movieId = Integer.parseInt(movie[1]);
+					double rating = Double.parseDouble(movie[2]);
+					
+					if(movieRatings.containsKey(movieId)) {
+						Pair<Integer,Double> oldPair = movieRatings.get(movieId);
+						Pair<Integer,Double> newPair = new Pair<Integer,Double>(oldPair.first()+1,oldPair.second()+rating);
+						movieRatings.put(movieId, newPair);
+					} else {
+						Pair<Integer,Double> newPair = new Pair<Integer,Double>(1,rating);
+						movieRatings.put(movieId, newPair);
+					}
+				}
+
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (br != null) {
+					try {
+						br.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			Map<Integer,Double> movRating = new HashMap<Integer,Double>();
+			Iterator it = movieRatings.entrySet().iterator();
+			while (it.hasNext()) {
+				Map.Entry<Integer, Pair<Integer,Double>> entry = (Map.Entry<Integer, Pair<Integer,Double>>)it.next();
+				Double rating = entry.getValue().second()/entry.getValue().first();
+				movRating.put(entry.getKey(), rating);
+			}
+			return movRating;
 		}
 }
