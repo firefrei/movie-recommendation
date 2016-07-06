@@ -156,6 +156,8 @@ public class Rec {
 			    for (int i = 1; i<= n; ++i){			    	
 			    	int key = movieIds.get(generator.nextInt(movieIds.size()-1));
 			    	List<String> randMovie = (List<String>) movies.get(key);
+			    	String title = randMovie.get(1).replace("\"","");
+			    	randMovie.add(1, title); 
 			    	List<String> imdId = links.get(key);
 			    	randMovie.add(imdId.get(0));
 			    	Double rating = (Double)movieRatings.get(key);
@@ -172,6 +174,8 @@ public class Rec {
 			    for (int i = 1; i<= n; ++i){			    	
 			    	int key = movieIds.get(generator.nextInt(movieIds.size()-1));
 			    	List<String> randMovie = (List<String>) movies.get(key);
+			    	String title = randMovie.get(1).replace("\"","");
+			    	randMovie.add(1, title); 
 			    	List<String> imdId = links.get(key);
 			    	randMovie.add(imdId.get(0));
 			    	ratingMovies.put(key, randMovie);
