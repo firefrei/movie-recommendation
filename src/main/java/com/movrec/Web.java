@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +30,7 @@ import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
+import javax.servlet.http.HttpServlet;
 import com.movrec.Rec;
 
 //import com.sun.xml.bind.v2.schemagen.xmlschema.List;
@@ -38,8 +39,15 @@ import com.movrec.Rec;
 public class Web {
 	Rec recModel;
 	
+	@Context ServletContext context;
+
+	
 	public Web() {
-		recModel = new Rec();
+		System.out.println("NewWeb");
+		
+//		recModel = (Rec) context.getAttribute("recModel");
+//		System.out.println("NewWeb2");
+		//recModel = new Rec();
 	}
 	
 	@GET  
@@ -70,7 +78,11 @@ public class Web {
 		 * Movie-ID, Movie-Title, -Genre, IMDB-ID, Rating  */
 
 		/*
+		 
 		// Returns n movies to rate. key:movieId, value:movietitle,genre,imdbId*/
+		
+		recModel = (Rec) context.getAttribute("recModel");
+		
 		Map<Integer,List<String>> movies = recModel.getRandomMovies(9);
 		String json = new Gson().toJson(movies);
 		
@@ -90,6 +102,8 @@ public class Web {
 
 		/*
 		// Returns n movies to rate. key:movieId, value:movietitle,genre,imdbId*/
+		recModel = (Rec) context.getAttribute("recModel");
+		
 		System.out.println("getMoviesForRating");
 		Map<Integer,List<String>> movies = recModel.getRatingMovies(5);
 		System.out.println("->Gotmovies");
@@ -120,9 +134,11 @@ public class Web {
 		Map<Integer,Double> userRatings = new HashMap();
 		Map<Integer,List<String>> recommendations = recModel.addUserRatings(userRatings);*/
 		
+		recModel = (Rec) context.getAttribute("recModel");
+		
 		Map<String, Double> userRatings = new HashMap<String, Double>();
 		userRatings = new Gson().fromJson(ratingData, userRatings.getClass());
-		Map<Integer,List<String>> recommendations = recModel.addUserRatings(userRatings);
+		Map<Integer,List<String>> recommendations = recModel.addUserRatings(userRatings,6);
 		
 		
 		String json = new Gson().toJson(recommendations);
@@ -132,10 +148,14 @@ public class Web {
 	
 	
 	@GET  
-	@Path("/getTop20Movies")
-	public Response getTop20Movies() {
+	@Path("/getAllGenres")
+	public Response getAllGenres() {
 		/*  
 		 * Movie-ID, Movie-Title, -Genre, IMDB-ID,  */
+		
+		recModel = (Rec) context.getAttribute("recModel");
+		
+		
 		ArrayList<String> foo = new ArrayList<String>();
 		foo.add("A");
 		foo.add("B");
@@ -152,6 +172,33 @@ public class Web {
 		
 		return Response.status(200).entity(json).build();
 	}
+	
+	
+	@POST  
+	@Path("/getMoviesForGenre")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public Response getMoviesForGenre(@FormParam("genre") String genre
+		    ) {
+		/* IN: Movie-ID, Rating (0.5-5), ratedMovieIds
+		 * OUT:  
+		 * 
+		
+		-CALL SIMON -> returns movies in getMoviesForRating format
+		 -> Pass over String with genre name
+	*/
+		
+		recModel = (Rec) context.getAttribute("recModel");
+		
+
+		// CALL 
+		
+		
+		String json = new Gson().toJson("");
+		
+		return Response.status(200).entity(json).build();
+	}
+	
 	
 	
 //	@GET  

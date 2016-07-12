@@ -11,12 +11,16 @@
       <param-value>com.movrec</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
+    
   </servlet>
   <servlet-mapping>
     <servlet-name>jersey-serlvet</servlet-name>
     <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
   
+  <listener>
+    <listener-class>com.movrec.Web_Init</listener-class>
+</listener>
   
   <filter>
     <filter-name>CorsFilter</filter-name>

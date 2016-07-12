@@ -124,10 +124,10 @@ public class Rec {
 			try {
 				br = new BufferedReader(new FileReader(pathToCSV));
 				while ((line = br.readLine()) != null) {
-					String[] movie = line.split(",");
+					String[] movie = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 					int movieId = Integer.parseInt(movie[0]);
 					movieIds.add(movieId);
-					
+
 					List<String> temp = Arrays.asList(movie);
 					List<String> information = new ArrayList(temp);
 					information.remove(0);
@@ -151,14 +151,12 @@ public class Rec {
 		}
 		
 		// Returns n random movies + movie information.
-		public static HashMap<Integer,List<String>> getRandomMovies(int n) {
+		public HashMap<Integer,List<String>> getRandomMovies(int n) {
 			HashMap<Integer,List<String>> randomMovies = new HashMap<Integer,List<String>>();
 			Random generator = new Random();
 			    for (int i = 1; i<= n; ++i){			    	
 			    	int key = movieIds.get(generator.nextInt(movieIds.size()-1));
 			    	List<String> randMovie = (List<String>) movies.get(key);
-			    	String title = randMovie.get(1).replace("\"","");
-			    	randMovie.add(1, title); 
 			    	List<String> imdId = links.get(key);
 			    	randMovie.add(imdId.get(0));
 			    	Double rating = (Double)movieRatings.get(key);
@@ -175,8 +173,6 @@ public class Rec {
 			    for (int i = 1; i<= n; ++i){			    	
 			    	int key = movieIds.get(generator.nextInt(movieIds.size()-1));
 			    	List<String> randMovie = (List<String>) movies.get(key);
-			    	String title = randMovie.get(1).replace("\"","");
-			    	randMovie.add(1, title); 
 			    	List<String> imdId = links.get(key);
 			    	randMovie.add(imdId.get(0));
 			    	ratingMovies.put(key, randMovie);
@@ -186,7 +182,7 @@ public class Rec {
 
 		// Add User ratings to the data set. key:movieId, value:rating
 		// Returns recommended movies. key:movieId, value:movietitle,genre,rating,imdId
-		public Map<Integer,List<String>> addUserRatings(Map<String,Double> userRatings){
+		public Map<Integer,List<String>> addUserRatings(Map<String,Double> userRatings, int n){
 			for (Entry<String, Double> entry: userRatings.entrySet()) {
 				Integer myInt = Integer.parseInt(entry.getKey());
 				Double myDouble = entry.getValue();
@@ -212,7 +208,7 @@ public class Rec {
 				}
 				
 			}*/
-			Rating[] recommendedMovies = recommendMovies(2);
+			Rating[] recommendedMovies = recommendMovies(n);
 			Map<Integer,List<String>> products = new HashMap<Integer, List<String>>();
 			
 			for(int i=0; i<recommendedMovies.length; ++i) {
@@ -288,5 +284,9 @@ public class Rec {
 				movRating.put(entry.getKey(), rating);
 			}
 			return movRating;
+		}
+		
+		public void close() {
+			sc.close();
 		}
 }
