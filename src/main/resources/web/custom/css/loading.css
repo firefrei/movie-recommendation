@@ -1,0 +1,574 @@
+.loading-pixels:nth-child(1) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.02s;
+}
+
+.loading-pixels:nth-child(2) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.04s;
+}
+
+.loading-pixels:nth-child(3) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.06s;
+}
+
+.loading-pixels:nth-child(4) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.08s;
+}
+
+.loading-pixels:nth-child(5) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.1s;
+}
+
+.loading-pixels:nth-child(6) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.12s;
+}
+
+.loading-pixels:nth-child(7) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.14s;
+}
+
+.loading-pixels:nth-child(8) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.16s;
+}
+
+.loading-pixels:nth-child(9) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.18s;
+}
+
+.loading-pixels:nth-child(10) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.2s;
+}
+
+.loading-pixels:nth-child(11) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.22s;
+}
+
+.loading-pixels:nth-child(12) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.24s;
+}
+
+.loading-pixels:nth-child(13) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.26s;
+}
+
+.loading-pixels:nth-child(14) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.28s;
+}
+
+.loading-pixels:nth-child(15) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.3s;
+}
+
+.loading-pixels:nth-child(16) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.32s;
+}
+
+.loading-pixels:nth-child(17) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.34s;
+}
+
+.loading-pixels:nth-child(18) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.36s;
+}
+
+.loading-pixels:nth-child(19) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.38s;
+}
+
+.loading-pixels:nth-child(20) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.4s;
+}
+
+.loading-pixels:nth-child(21) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.42s;
+}
+
+.loading-pixels:nth-child(22) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.44s;
+}
+
+.loading-pixels:nth-child(23) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.46s;
+}
+
+.loading-pixels:nth-child(24) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.48s;
+}
+
+.loading-pixels:nth-child(25) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.5s;
+}
+
+.loading-pixels:nth-child(26) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.52s;
+}
+
+.loading-pixels:nth-child(27) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.54s;
+}
+
+.loading-pixels:nth-child(28) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.56s;
+}
+
+.loading-pixels:nth-child(29) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.58s;
+}
+
+.loading-pixels:nth-child(30) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.6s;
+}
+
+.loading-pixels:nth-child(31) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.62s;
+}
+
+.loading-pixels:nth-child(32) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.64s;
+}
+
+.loading-pixels:nth-child(33) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.66s;
+}
+
+.loading-pixels:nth-child(34) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.68s;
+}
+
+.loading-pixels:nth-child(35) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.7s;
+}
+
+.loading-pixels:nth-child(36) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.72s;
+}
+
+.loading-pixels:nth-child(37) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.74s;
+}
+
+.loading-pixels:nth-child(38) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.76s;
+}
+
+.loading-pixels:nth-child(39) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.78s;
+}
+
+.loading-pixels:nth-child(40) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.8s;
+}
+
+.loading-pixels:nth-child(41) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.82s;
+}
+
+.loading-pixels:nth-child(42) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.84s;
+}
+
+.loading-pixels:nth-child(43) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.86s;
+}
+
+.loading-pixels:nth-child(44) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.88s;
+}
+
+.loading-pixels:nth-child(45) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.9s;
+}
+
+.loading-pixels:nth-child(46) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.92s;
+}
+
+.loading-pixels:nth-child(47) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.94s;
+}
+
+.loading-pixels:nth-child(48) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.96s;
+}
+
+.loading-pixels:nth-child(49) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.98s;
+}
+
+.loading-pixels:nth-child(50) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 1s;
+}
+
+.loading-pixels:nth-child(51) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 1.02s;
+}
+
+.loading-pixels:nth-child(52) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.02s;
+}
+
+.loading-pixels:nth-child(53) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.04s;
+}
+
+.loading-pixels:nth-child(54) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.06s;
+}
+
+.loading-pixels:nth-child(55) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.08s;
+}
+
+.loading-pixels:nth-child(56) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.1s;
+}
+
+.loading-pixels:nth-child(57) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.12s;
+}
+
+.loading-pixels:nth-child(58) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.14s;
+}
+
+.loading-pixels:nth-child(59) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.16s;
+}
+
+.loading-pixels:nth-child(60) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.18s;
+}
+
+.loading-pixels:nth-child(61) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.2s;
+}
+
+.loading-pixels:nth-child(62) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.22s;
+}
+
+.loading-pixels:nth-child(63) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.24s;
+}
+
+.loading-pixels:nth-child(64) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.26s;
+}
+
+.loading-pixels:nth-child(65) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.28s;
+}
+
+.loading-pixels:nth-child(66) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.3s;
+}
+
+.loading-pixels:nth-child(67) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.32s;
+}
+
+.loading-pixels:nth-child(68) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.34s;
+}
+
+.loading-pixels:nth-child(69) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.36s;
+}
+
+.loading-pixels:nth-child(70) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.38s;
+}
+
+.loading-pixels:nth-child(71) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.4s;
+}
+
+.loading-pixels:nth-child(72) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.42s;
+}
+
+.loading-pixels:nth-child(73) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.44s;
+}
+
+.loading-pixels:nth-child(74) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.46s;
+}
+
+.loading-pixels:nth-child(75) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.48s;
+}
+
+.loading-pixels:nth-child(76) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.5s;
+}
+
+.loading-pixels:nth-child(77) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.52s;
+}
+
+.loading-pixels:nth-child(78) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.54s;
+}
+
+.loading-pixels:nth-child(79) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.56s;
+}
+
+.loading-pixels:nth-child(80) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.58s;
+}
+
+.loading-pixels:nth-child(81) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.6s;
+}
+
+.loading-pixels:nth-child(82) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.62s;
+}
+
+.loading-pixels:nth-child(83) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.64s;
+}
+
+.loading-pixels:nth-child(84) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.66s;
+}
+
+.loading-pixels:nth-child(85) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.68s;
+}
+
+.loading-pixels:nth-child(86) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.7s;
+}
+
+.loading-pixels:nth-child(87) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.72s;
+}
+
+.loading-pixels:nth-child(88) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.74s;
+}
+
+.loading-pixels:nth-child(89) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.76s;
+}
+
+.loading-pixels:nth-child(90) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.78s;
+}
+
+.loading-pixels:nth-child(91) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.8s;
+}
+
+.loading-pixels:nth-child(92) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.82s;
+}
+
+.loading-pixels:nth-child(93) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.84s;
+}
+
+.loading-pixels:nth-child(94) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.86s;
+}
+
+.loading-pixels:nth-child(95) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.88s;
+}
+
+.loading-pixels:nth-child(96) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.9s;
+}
+
+.loading-pixels:nth-child(97) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.92s;
+}
+
+.loading-pixels:nth-child(98) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.94s;
+}
+
+.loading-pixels:nth-child(99) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.96s;
+}
+
+.loading-pixels:nth-child(100) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 0.98s;
+}
+
+.loading-pixels:nth-child(101) {
+  animation: magic 2.5s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes magic {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+    background: #CAF7E2;
+    box-shadow: 0 -1px 0px #CAF7E2;
+  }
+  28% {
+    opacity: 1;
+  }
+  30% {
+    background: #58B09C;
+    box-shadow: 0 -1px 0px #58B09C;
+  }
+  50% {
+    background: #003A3A;
+    box-shadow: 0 -1px 0px #003A3A;
+  }
+  65% {
+    background: #0C2D2A;
+    box-shadow: 0 -1px 0px #0C2D2A;
+  }
+  80% {
+    background: #003A3A;
+    box-shadow: 0 -1px 0px #003A3A;
+  }
+  90% {
+    opacity: 1;
+    box-shadow: 0 -1px 0px #58B09C;
+    background: #58B09C;
+  }
+  100% {
+    opacity: 0;
+    background: #CAF7E2;
+  }
+}
+.loading-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.loading-container .loading-label {
+  margin: auto;
+  position: relative;
+  margin-top: 5%;
+  width: 100%;
+}
+.loading-container .loading-label h1 {
+	position: absolute;
+	top: 0;
+	margin: 0 20px;
+	padding: 0;
+	width: 100%;
+	z-index: 9999;
+  	text-align: center;
+  	color: #fff;
+}
+.loading-container .loading-label .loading-pixels {
+  float: left;
+  box-shadow: 0 -1px 0px #CAF7E2;
+  margin-top: 0;
+  margin-bottom: 0;
+  opacity: 0;
+  height: 20px;
+  width: calc(100% / 50);
+}
+

@@ -58,6 +58,16 @@ h4 {
 	margin: auto 10px;
 }
 
+.rating-results {
+	
+}
+
+.rating-votes {
+	display: block;
+	padding-top: 50px;
+	float: left;
+}
+
 .modal.movie-detail img {
 	float:right;
 	padding: 0 20px 10px 20px;
