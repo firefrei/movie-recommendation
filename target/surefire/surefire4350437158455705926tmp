@@ -1,0 +1,5 @@
+#surefire
+#Wed Jul 06 12:41:39 CEST 2016
+user.dir=/home/bar/uni/master/s2/Big_Data_Praktikum/movie-recommendation
+localRepository=/home/bar/.m2/repository
+basedir=/home/bar/uni/master/s2/Big_Data_Praktikum/movie-recommendation

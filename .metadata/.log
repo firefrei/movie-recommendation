@@ -1,0 +1,42 @@
+!SESSION 2016-07-06 12:37:20.636 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.8.0_91
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=de_DE
+Command-line arguments:  -data /home/bar/uni/master/s2/Big_Data_Praktikum/movie-recommendation -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.mylyn.tasks.core 4 0 2016-07-06 12:38:52.949
+!MESSAGE Could not write: /home/bar/uni/master/s2/Big_Data_Praktikum/movie-recommendation/.metadata/.mylyn/repositories.xml.zip
+!STACK 0
+java.io.IOException: Datei oder Verzeichnis nicht gefunden
+	at java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.io.File.createNewFile(File.java:1012)
+	at org.eclipse.mylyn.internal.tasks.core.TaskRepositoriesExternalizer.writeRepositoriesToXML(TaskRepositoriesExternalizer.java:52)
+	at org.eclipse.mylyn.internal.tasks.core.TaskRepositoryManager.saveRepositories(TaskRepositoryManager.java:422)
+	at org.eclipse.mylyn.internal.tasks.core.RepositoryExternalizationParticipant.save(RepositoryExternalizationParticipant.java:77)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.AbstractExternalizationParticipant.execute(AbstractExternalizationParticipant.java:70)
+	at org.eclipse.mylyn.internal.tasks.core.externalization.ExternalizationManager$ExternalizationJob.run(ExternalizationManager.java:222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.ui.ide 4 4 2016-07-06 12:38:54.624
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 4 1 2016-07-06 12:38:54.625
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 4 568 2016-07-06 12:38:54.625
+!MESSAGE Could not write workspace metadata '/home/bar/uni/master/s2/Big_Data_Praktikum/movie-recommendation/.metadata/.plugins/org.eclipse.core.resources/.root/1.tree'.
+!STACK 0
+java.io.FileNotFoundException: /home/bar/uni/master/s2/Big_Data_Praktikum/movie-recommendation/.metadata/.plugins/org.eclipse.core.resources/.root/1.tree (Datei oder Verzeichnis nicht gefunden)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:162)
+	at org.eclipse.core.internal.localstore.SafeFileOutputStream.<init>(SafeFileOutputStream.java:51)
+	at org.eclipse.core.internal.resources.SaveManager.saveTree(SaveManager.java:1350)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1134)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2375)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$5.run(IDEWorkbenchAdvisor.java:508)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY org.eclipse.ui 2 2 2016-07-06 12:38:54.654
+!MESSAGE Invalid property category path: ValidationPropertiesPage (bundle: org.eclipse.wst.xml.ui, propertyPage: org.eclipse.wst.xml.ui.propertyPage.project.validation)

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -156,12 +157,9 @@ public class Web {
 		recModel = (Rec) context.getAttribute("recModel");
 		
 		
-		ArrayList<String> foo = new ArrayList<String>();
-		foo.add("A");
-		foo.add("B");
-		foo.add("C");
+		Set<String> genres = recModel.getGenres();
 
-		String json = new Gson().toJson(foo );
+		String json = new Gson().toJson(genres );
 		
 		// CALL SIMON 
 		// Not implemented.

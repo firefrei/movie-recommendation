@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
@@ -35,6 +36,7 @@ public class Rec {
 	public static List<Integer> movieIds;
 	public static JavaSparkContext sc;
 	public static Map<Integer,Double> movieRatings;
+	public static Map<String,List<Integer>> genres;
 	
 	public static void main(String[] args) {
 		
@@ -55,25 +57,6 @@ public class Rec {
 	    ratings = parseRatings(basepath+"ml-latest-small/ratings.csv", sc);
 	    movieRatings = generateMovieRatings(basepath + "ml-latest-small/ratings.csv");
 	    
-	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
-	   
-/*	    Map<Integer,Double> userR = new HashMap<Integer,Double>();
-	    userR.put(1, 4.0);
-	    userR.put(2, 3.5);
-	    Map<Integer,List<String>> recMov = new HashMap<Integer,List<String>>();
-	    recMov = addUserRatings(userR);*/
-	    
-/*	    // Choose n random movies to rate.
-	    HashMap<Integer,List<String>> test = getRandomMovies(10);
-	    
-	    //Print the random movies.
-	    Set<Integer> keySet = test.keySet();
-	    Iterator<Integer> it = keySet.iterator();
-	    while(it.hasNext()){
-	    	int key = it.next();
-	    	System.out.println(key);
-	    	System.out.println(test.get(key));
-	    }*/
 	    	     
 	    System.out.println("Done");
 	    sc.close();
@@ -91,12 +74,12 @@ public class Rec {
 	    links = parseCSVFile(getClass().getClassLoader().getResource("ml-latest-small/links.csv").getFile());
 	    ratings = parseRatings(getClass().getClassLoader().getResource("ml-latest-small/ratings.csv").getFile(), sc);
 	    movieRatings = generateMovieRatings(getClass().getClassLoader().getResource("ml-latest-small/ratings.csv").getFile());
+	    genres = parseGenres(getClass().getClassLoader().getResource("ml-latest-small/movies.csv").getFile());
 	    
 	    // Output
-	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
-	    System.out.println("Done");
-	    
-	    //sc.close();
+/*	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
+	    System.out.println("Done");*/
+
 	}
 	  
 		// Parse the given CSV file and return a JavaRDD containing the ratings.
@@ -284,6 +267,53 @@ public class Rec {
 				movRating.put(entry.getKey(), rating);
 			}
 			return movRating;
+		}
+		
+		public static Map<String,List<Integer>> parseGenres(String pathToCSV) {
+			Map<String,List<Integer>> tempGenres = new HashMap<String,List<Integer>>();
+		    
+			BufferedReader br = null;
+			String line = "";
+			
+			try {
+				br = new BufferedReader(new FileReader(pathToCSV));
+				while ((line = br.readLine()) != null) {
+					String[] movie = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+					int movieId = Integer.parseInt(movie[0]);
+					String[] genreList = movie[2].split(Pattern.quote("|"),-1);
+					String genre;
+					
+					for(int i=0; i<genreList.length; i++) {
+						genre = genreList[i];
+						if(tempGenres.containsKey(genre)) {
+							List<Integer> currentGenreList = tempGenres.get(genre);
+							currentGenreList.add(movieId);
+							tempGenres.replace(genre, currentGenreList);
+						} else {
+							List<Integer> newGenreList = Arrays.asList(movieId);
+							tempGenres.put(genre, newGenreList);
+						}
+					}
+				}
+
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (br != null) {
+					try {
+						br.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			return tempGenres;
+		}
+		
+		public Set<String> getGenres() {
+			return genres.keySet(); 
 		}
 		
 		public void close() {
