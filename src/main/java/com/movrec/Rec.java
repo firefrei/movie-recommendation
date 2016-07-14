@@ -269,6 +269,7 @@ public class Rec {
 			return movRating;
 		}
 		
+		// Parse all genres of the given CSV file. key:genre value:list of the movieIds
 		public static Map<String,List<Integer>> parseGenres(String pathToCSV) {
 			Map<String,List<Integer>> tempGenres = new HashMap<String,List<Integer>>();
 		    
@@ -312,8 +313,25 @@ public class Rec {
 			return tempGenres;
 		}
 		
+		// Returns a set of all genres.
 		public Set<String> getGenres() {
 			return genres.keySet(); 
+		}
+		
+		// Returns all movies of the given genre.
+		public Map<Integer,List<String>> getMoviesByGenre(String genre) {
+			Map<Integer,List<String>> moviesByGenre = new HashMap<Integer,List<String>>();
+			List<Integer> movieIds = genres.get(genre);
+			Iterator it = movieIds.iterator();
+			int key;
+			while(it.hasNext()) {
+				key = (Integer)it.next();
+				List<String> movInf = movies.get(key);
+				List<String> imdbId = links.get(key);
+				movInf.add(imdbId.get(0));
+				moviesByGenre.put(key, movInf);
+			}
+			return moviesByGenre;
 		}
 		
 		public void close() {
