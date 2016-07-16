@@ -1,76 +1,31 @@
 package com.movrec;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URLDecoder;
-import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import javax.servlet.http.HttpServlet;
+
 import com.movrec.Rec;
 
-//import com.sun.xml.bind.v2.schemagen.xmlschema.List;
 
 @Path("/rec")
 public class Web {
 	Rec recModel;
 	
 	@Context ServletContext context;
-
-	
-	public Web() {
-		System.out.println("NewWeb");
-		
-//		recModel = (Rec) context.getAttribute("recModel");
-//		System.out.println("NewWeb2");
-		//recModel = new Rec();
-	}
-	
-	@GET  
-	@Path("/hj")
-	public Response sayXMLHello() {  
-		String output =  "<?xml version=\"1.0\"?>" + "<hello> Hello Jersey" + "</hello>";  
-		return Response.status(200).entity(output).build();
-	}  
-	
-	@GET  
-	@Path("/json")
-	public Response jsonTest() {
-		ArrayList<String> foo = new ArrayList<String>();
-		foo.add("A");
-		foo.add("B");
-		foo.add("C");
-
-		String json = new Gson().toJson(foo );
-		
-		return Response.status(200).entity(json).build();
-	}
-	
 	
 	@GET  
 	@Path("/getRandomMovies")
@@ -87,7 +42,6 @@ public class Web {
 		Map<Integer,List<String>> movies = recModel.getRandomMovies(9);
 		String json = new Gson().toJson(movies);
 		
-		// CALL SIMON 
 		// -> Get Dict/Map with Key:MovieID and Value:List with other Attributes
 		// -> Pass over Int:Number of wanted movies
 		
@@ -106,11 +60,10 @@ public class Web {
 		recModel = (Rec) context.getAttribute("recModel");
 		
 		System.out.println("getMoviesForRating");
-		Map<Integer,List<String>> movies = recModel.getRatingMovies(5);
+		Map<Integer,List<String>> movies = recModel.getRatingMovies(10);
 		System.out.println("->Gotmovies");
 		String json = new Gson().toJson(movies);
 		
-		// CALL SIMON 
 		// -> Get Dict/Map with Key:MovieID and Value:List with other Attributes
 		// -> Pass over Int:Number of wanted movies
 		
@@ -127,20 +80,16 @@ public class Web {
 		 * OUT:  
 		 * 
 		
-		-CALL SIMON -> returns result and backup-items (if duplicates)
+		- returns result and backup-items (if duplicates)
 		 -> Pass over Dict/Map with Key:MovieId and Value:rating
 		- CHECK HERE: duplicates -> remove them if needed
-		
-		Rec recModel = new Rec();
-		Map<Integer,Double> userRatings = new HashMap();
-		Map<Integer,List<String>> recommendations = recModel.addUserRatings(userRatings);*/
+		*/
 		
 		recModel = (Rec) context.getAttribute("recModel");
 		
 		Map<String, Double> userRatings = new HashMap<String, Double>();
 		userRatings = new Gson().fromJson(ratingData, userRatings.getClass());
 		Map<Integer,List<String>> recommendations = recModel.addUserRatings(userRatings,6);
-		
 		
 		String json = new Gson().toJson(recommendations);
 		
@@ -156,17 +105,8 @@ public class Web {
 		
 		recModel = (Rec) context.getAttribute("recModel");
 		
-		
 		Set<String> genres = recModel.getGenres();
-
-		String json = new Gson().toJson(genres );
-		
-		// CALL SIMON 
-		// Not implemented.
-		// Rec recModel = new Rec();
-		//recModel.getTopMovies(20);
-		// -> Get Dict/Map with Key:MovieID and Value:List with other Attributes (including ranking!)
-		// -> Pass over Int:Number of wanted movies
+		String json = new Gson().toJson(genres);
 		
 		return Response.status(200).entity(json).build();
 	}
@@ -182,43 +122,19 @@ public class Web {
 		 * OUT:  
 		 * 
 		
-		-CALL SIMON -> returns movies in getMoviesForRating format
+		 - returns movies in getMoviesForRating format
 		 -> Pass over String with genre name
 	*/
 		
 		recModel = (Rec) context.getAttribute("recModel");
-		
-
-		// CALL 
-		
-		
-		String json = new Gson().toJson("");
+	
+		Map<Integer,List<String>> movies = recModel.getMoviesByGenre(genre, 10);
+		String json = new Gson().toJson(movies);
 		
 		return Response.status(200).entity(json).build();
 	}
 	
-	
-	
-//	@GET  
-//	@Path("/triggerTraining")
-//	public Response triggerTraining() {
-//		/*  
-//		 * Movie-ID, Movie-Title, -Genre, IMDB-ID,  */
-//		ArrayList<String> foo = new ArrayList<String>();
-//		foo.add("A");
-//		foo.add("B");
-//		foo.add("C");
-//
-//		String json = new Gson().toJson(foo );
-//		
-//		// CALL SIMON 
-//		// -> Get Dict/Map with Key:MovieID and Value:List with other Attributes (including ranking!)
-//		// -> Pass over Int:Number of wanted movies
-//		
-//		return Response.status(200).entity(json).build();
-//	}
-//	
-	
+
 //	@GET
 //	@Path("/{parameter}")
 //	public Response responseMsg( @PathParam("parameter") String parameter,

@@ -5,7 +5,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,8 +42,6 @@ public class Rec {
 		// SETUP
 		// Simon
 		String basepath = "/home/bar/uni/master/s2/Big_Data_Praktikum/";
-		// Matze
-		//String basepath = "/Users/mat/Workspaces/Eclipse/MovRecTwo/WebContent/html/";
 			
 	    SparkConf conf = new SparkConf().setAppName("Movie Recommendation");
 	    conf.setMaster("local[2]");
@@ -65,20 +62,17 @@ public class Rec {
 	public Rec() {
 		// Spark setup
 	    SparkConf conf = new SparkConf().setAppName("Movie Recommendation");
-	    conf.setMaster("local[2]");
+	    conf.setMaster("local[4]");
 	    sc = new JavaSparkContext(conf);
 
 	    // Load and parse the data
 	    movieIds = new ArrayList<Integer>();
-	    movies = parseCSVFile(getClass().getClassLoader().getResource("ml-latest-small/movies.csv").getFile());
+	    String movies_csv = getClass().getClassLoader().getResource("ml-latest-small/movies.csv").getFile();
+	    movies = parseCSVFile(movies_csv);
 	    links = parseCSVFile(getClass().getClassLoader().getResource("ml-latest-small/links.csv").getFile());
 	    ratings = parseRatings(getClass().getClassLoader().getResource("ml-latest-small/ratings.csv").getFile(), sc);
 	    movieRatings = generateMovieRatings(getClass().getClassLoader().getResource("ml-latest-small/ratings.csv").getFile());
-	    genres = parseGenres(getClass().getClassLoader().getResource("ml-latest-small/movies.csv").getFile());
-	    
-	    // Output
-/*	    System.out.println("Movies:"+movies.size()+" Links:"+links.size()+" Ratings:"+ratings.count());
-	    System.out.println("Done");*/
+	    genres = parseGenres(movies_csv);
 
 	}
 	  
@@ -112,7 +106,7 @@ public class Rec {
 					movieIds.add(movieId);
 
 					List<String> temp = Arrays.asList(movie);
-					List<String> information = new ArrayList(temp);
+					List<String> information = new ArrayList<String>(temp);
 					information.remove(0);
 					movieInformation.put(movieId, information);
 				}
@@ -200,6 +194,8 @@ public class Rec {
 				String[] tokens = ranking.split(delims);
 				int key = Integer.parseInt(tokens[1]);
 				List<String> movinf = movies.get(key);
+				String rating = movieRatings.get(key).toString();
+				movinf.add(rating);
 				movinf.add(tokens[2]);
 				List<String> imdId = links.get(key);
 				movinf.add(imdId.get(0));
@@ -213,9 +209,8 @@ public class Rec {
 			
 			// Build the recommendation model using ALS
 		    int rank = 10;
-		    int numIterations = 10;
+		    int numIterations = 20;
 		    MatrixFactorizationModel model = ALS.train(JavaRDD.toRDD(ratings), rank, numIterations, 0.01);
-		    
 		    
 			// Recommend n products to user 0
 		    Rating[] userProducts = model.recommendProducts(0,n);
@@ -260,7 +255,7 @@ public class Rec {
 				}
 			}
 			Map<Integer,Double> movRating = new HashMap<Integer,Double>();
-			Iterator it = movieRatings.entrySet().iterator();
+			Iterator<Entry<Integer, Pair<Integer, Double>>> it = movieRatings.entrySet().iterator();
 			while (it.hasNext()) {
 				Map.Entry<Integer, Pair<Integer,Double>> entry = (Map.Entry<Integer, Pair<Integer,Double>>)it.next();
 				Double rating = entry.getValue().second()/entry.getValue().first();
@@ -280,18 +275,18 @@ public class Rec {
 				br = new BufferedReader(new FileReader(pathToCSV));
 				while ((line = br.readLine()) != null) {
 					String[] movie = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-					int movieId = Integer.parseInt(movie[0]);
+					Integer movieId = Integer.parseInt(movie[0]);
 					String[] genreList = movie[2].split(Pattern.quote("|"),-1);
 					String genre;
 					
 					for(int i=0; i<genreList.length; i++) {
 						genre = genreList[i];
 						if(tempGenres.containsKey(genre)) {
-							List<Integer> currentGenreList = tempGenres.get(genre);
+							List<Integer> currentGenreList = (List<Integer>)tempGenres.get(genre);
 							currentGenreList.add(movieId);
 							tempGenres.replace(genre, currentGenreList);
 						} else {
-							List<Integer> newGenreList = Arrays.asList(movieId);
+							List<Integer> newGenreList = new ArrayList<Integer>(movieId);
 							tempGenres.put(genre, newGenreList);
 						}
 					}
@@ -319,18 +314,17 @@ public class Rec {
 		}
 		
 		// Returns all movies of the given genre.
-		public Map<Integer,List<String>> getMoviesByGenre(String genre) {
+		public Map<Integer,List<String>> getMoviesByGenre(String genre, Integer n) {
 			Map<Integer,List<String>> moviesByGenre = new HashMap<Integer,List<String>>();
 			List<Integer> movieIds = genres.get(genre);
-			Iterator it = movieIds.iterator();
-			int key;
-			while(it.hasNext()) {
-				key = (Integer)it.next();
-				List<String> movInf = movies.get(key);
-				List<String> imdbId = links.get(key);
-				movInf.add(imdbId.get(0));
-				moviesByGenre.put(key, movInf);
-			}
+			Random generator = new Random();
+			    for (int i = 1; i<= n; ++i){			    	
+			    	int key = movieIds.get(generator.nextInt(movieIds.size()-1));
+			    	List<String> movInf = movies.get(key);
+					List<String> imdbId = links.get(key);
+					movInf.add(imdbId.get(0));
+					moviesByGenre.put(key, movInf);
+			    }
 			return moviesByGenre;
 		}
 		

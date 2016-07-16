@@ -129,8 +129,9 @@ function insertView_start() {
     		var html = '<div class="col-lg-4 movie_'+movieID+'"><img class="poster img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">';
     			html += '<h2>'+ movieInfo[0] +'</h2>';
     			html += '<p>';
-    			var test = movieInfo[1].split("|");
-    			jQuery.each(test, function(key, value) {
+    			// Genres split and output
+    			var genres = movieInfo[1].split("|");
+    			jQuery.each(genres, function(key, value) {
     				html += ' <span class="label label-default">'+value+'</span> ';
     			});
     			html += '</p>';
@@ -210,6 +211,14 @@ function insertView_ratings() {
     		html_modal += '">';
     		html_modal += '<h2 class="featurette-heading">'+movieInfo[0]+'</h2>';
     		html_modal += '<p><span class="lead desc"></span> <button type="button" class="btn btn-default btn-sm" style="vertical-align:top;" data-toggle="modal" data-target="#movieModal_'+movieID+'">View details &raquo;</button></p>';
+    		html_modal += '<p>';
+    		// Genres split and output
+			var genres = movieInfo[1].split("|");
+			jQuery.each(genres, function(key, value) {
+				html_modal += ' <span class="label label-default">'+value+'</span> ';
+			});
+			
+    		html_modal += '</p><br>';
     		html_modal += '<p class="rating">your rating: '+html_rating_stars(movieID)+'</p>';
     		html_modal += '<p></p>';
     		html_modal += '</div>';
@@ -225,15 +234,15 @@ function insertView_ratings() {
     		$(".container.marketing .modal-body").append(html_modal);
     		
     		// Add movie to ratingsArray
-    		myRatingsArray[movieID] = 0.0;
+    		myRatingsArray[movieID] = 1.0;
 
     		// Load further information
     		insertMovieInfo(movieInfo[2], "movie_"+movieID, movieID);
     		$('.stars_'+movieID).barrating({
     	        theme: 'fontawesome-stars',
     	        readonly: false,
-    	        initialRating: -1,
-    	        showSelectedRating: true,
+    	        initialRating: 1,
+    	        //showSelectedRating: true,
     	        deselectable: true,
     	        onSelect: function(value, text, event) {
     	        	myRatingsArray[movieID] = parseFloat(value);
@@ -271,7 +280,7 @@ function insertView_ratings() {
                 	
         	    	jQuery.each(data, function(movieID, movieInfo) {
         	    		// convert als suggestion to css-class, e.g. 7,43 to 74
-        	    		var suggestion_css_class_id = Math.round(parseFloat(movieInfo[2]) * 10)
+        	    		var suggestion_css_class_id = Math.round(parseFloat(movieInfo[3]) * 10)
         	    		var suggestion_css_color = "";
         	    		if(suggestion_css_class_id/100 < 1/3) { suggestion_css_color = "" }
         	    		else if (suggestion_css_class_id/100 < 2/3) { suggestion_css_color = "orange" }
@@ -292,7 +301,7 @@ function insertView_ratings() {
         	    		$(".container.marketing .rating-results").append(html);
         	 
         	    		// Load further information
-        	    		insertMovieInfo(movieInfo[3], "movie_"+movieID, movieID);
+        	    		insertMovieInfo(movieInfo[4], "movie_"+movieID, movieID);
         	    		$('.stars_'+movieID).barrating({
         	    	        theme: 'fontawesome-stars',
         	    	        initialRating: parseFloat(movieInfo[2])%5, // dev purpose only (mod 5)
@@ -308,6 +317,212 @@ function insertView_ratings() {
     });
 }
 
+
+function insertView_genres() {
+	// clear view
+	clear_view();
+	
+	// set menu
+	$(".menu_genres").addClass("active");
+	
+	
+	// load/insert base plugins
+	var html_base = '<div class="container marketing">';
+	html_base += '<div class="genres">'+html_loading()+'</div>';
+	html_base += '<div class="rating-results"></div>';
+	html_base += '<div class="rating-votes">';
+	html_base += '<h4>Select a genre to get recommendations</h4>';
+	html_base += '<button type="button" class="btn btn-circle" data-toggle="modal" data-target="#rateModal">Rate now!</button>';
+	html_base += '</div>';
+	html_base += '<div class="modal movie-detail fade" id="rateModal" tabindex="-1" role="dialog" aria-labelledby="rateModalLabel">';
+	html_base += '<div class="modal-dialog modal-lg" role="document">';
+	html_base += '<div class="modal-content">';
+	html_base += '<div class="modal-header">';
+	html_base += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+	html_base += '<h4 class="modal-title" id="rateModalLabel">Rate some movies to get recommendations</h4>';
+	html_base += '</div>';
+	html_base += '<div class="modal-body">';
+	html_base += '</div>';
+	html_base += '<div class="modal-footer">';
+	html_base += '<button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>';
+	html_base += '<button type="button" class="btn btn-primary" id="submit_ratings">submit ratings</button>';
+	html_base += '</div>';
+	html_base += '</div>';
+	html_base += '</div>';
+	html_base += '</div>';
+	$("#content-area").append(html_base);
+	
+	$.ajax({
+		dataType: 'json',
+        url: base_url+"getAllGenres"
+    }).then(function(data) {
+    	
+    	// Remove loading bar if any 
+    	remove_loading();
+    	
+    	//output
+    	console.log("getAllGenres");
+		console.log(data);
+		
+    	var item_counter = 0;
+    	jQuery.each(data, function(key, value) {
+    		
+    		// GENRE LIST
+    		var html_genre = ' <button type="button" class="label label-default" id="submit_genre_'+key+'">'+value+'</button> ';
+    		$(".container.marketing .genres").append(html_genre);
+    		
+    		
+    		// button actions -> submit genre
+        	$("#submit_genre_"+key).click(function() {
+        		 insertView_genres_fillModal(value); 
+        	});
+    		
+    		
+    	});
+    });
+}
+
+function insertView_genres_fillModal(genre) {
+	// vars
+	var myRatingsArray = new Object();
+	
+	
+	// post data
+	$.ajax({
+        url: base_url+"getMoviesForGenre",
+        type: 'post',
+        dataType: 'json',
+        data: {'genre': genre},
+        success: function (data) { 
+        	// Remove loading bar if any 
+        	remove_loading();
+        	
+        	// MODAL
+    		$(".container.marketing .modal-body").empty();
+        	
+        	var item_counter = 0;
+        	jQuery.each(data, function(movieID, movieInfo) {
+            	
+        		// generate featurette
+        		var html_modal = '<div class="row featurette movie_'+movieID+'">';
+        		html_modal += '<div class="col-md-7';
+        		if (item_counter%2) {
+        			html_modal += ' col-md-push-5';
+        		}
+        		html_modal += '">';
+        		html_modal += '<h2 class="featurette-heading">'+movieInfo[0]+'</h2>';
+        		html_modal += '<p><span class="lead desc"></span> <button type="button" class="btn btn-default btn-sm" style="vertical-align:top;" data-toggle="modal" data-target="#movieModal_'+movieID+'">View details &raquo;</button></p>';
+        		html_modal += '<p>';
+        		// Genres split and output
+    			var genres = movieInfo[1].split("|");
+    			jQuery.each(genres, function(key, value) {
+    				html_modal += ' <span class="label label-default">'+value+'</span> ';
+    			});
+    			
+        		html_modal += '</p><br>';
+        		html_modal += '<p class="rating">your rating: '+html_rating_stars(movieID)+'</p>';
+        		html_modal += '<p></p>';
+        		html_modal += '</div>';
+        		html_modal += '<div class="col-md-5';
+        		if (item_counter%2) {
+        			html_modal += ' col-md-pull-7';
+        		}
+        		html_modal += '">';
+        		html_modal += '<img class="featurette-image img-responsive center-block poster" data-src="" alt="Poster">';
+        		html_modal += '</div>';
+        		html_modal += '</div>';
+        		html_modal += '<hr class="featurette-divider">';
+        		$(".container.marketing .modal-body").append(html_modal);
+        		
+        		// Add movie to ratingsArray
+        		myRatingsArray[movieID] = 1.0;
+    
+        		// Load further information
+        		insertMovieInfo(movieInfo[2], "movie_"+movieID, movieID);
+        		$('.stars_'+movieID).barrating({
+        	        theme: 'fontawesome-stars',
+        	        readonly: false,
+        	        initialRating: 1,
+        	        showSelectedRating: true,
+        	        deselectable: true,
+        	        onSelect: function(value, text, event) {
+        	        	myRatingsArray[movieID] = parseFloat(value);
+        	          }
+        	      });
+        		
+        		item_counter++;
+        	});
+        	
+        	
+        	// button actions -> submit ratings
+        	$("#submit_ratings").click(function() {
+        		// Close modal
+        		$("#rateModal").modal('hide');
+        		
+        		// clear result area
+        		$(".container.marketing .rating-results").empty().html(html_loading());
+        		
+        		// log
+        		console.log("POST payload:");
+        		console.log(myRatingsArray);
+        		
+        		// post data
+        		$.ajax({
+                    url: base_url+"setMoviesForRating",
+                    type: 'post',
+                    dataType: 'json',
+                    data: {'ratingData': JSON.stringify(myRatingsArray)},
+                    success: function (data) {
+                    	var item_counter = 0;
+                    	console.log("recieved POST response:");
+                    	console.log(data)
+                    	
+                    	// clear result area
+                    	$(".container.marketing .rating-results").empty()
+                    	
+            	    	jQuery.each(data, function(movieID, movieInfo) {
+            	    		// convert als suggestion to css-class, e.g. 7,43 to 74
+            	    		var suggestion_css_class_id = Math.round(parseFloat(movieInfo[3]) * 10)
+            	    		var suggestion_css_color = "";
+            	    		if(suggestion_css_class_id/100 < 1/3) { suggestion_css_color = "" }
+            	    		else if (suggestion_css_class_id/100 < 2/3) { suggestion_css_color = "orange" }
+            	    		else { suggestion_css_color = "green" }
+            	    		
+            	    		// generate view
+            	    		var html = '<div class="col-lg-4 movie_'+movieID+'">';
+            	    		html += '<div class="c100 p'+suggestion_css_class_id+' '+suggestion_css_color+'"><span><img class="poster img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"></span><div class="slice"><div class="bar"></div><div class="fill"></div></div></div>';
+                			html += '<h2>'+ movieInfo[0] +'</h2>';
+                			html += '<p>';
+                			var test = movieInfo[1].split("|");
+                			jQuery.each(test, function(key, value) {
+                				html += ' <span class="label label-default">'+value+'</span> ';
+                			});
+                			html += '</p>';
+                			html += '<p>'+html_rating_stars(movieID)+ ' <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#movieModal_'+movieID+'">View details &raquo;</button>';
+                			html += '</div><!-- /.col-lg-4 -->';    			
+            	    		$(".container.marketing .rating-results").append(html);
+            	 
+            	    		// Load further information
+            	    		insertMovieInfo(movieInfo[4], "movie_"+movieID, movieID);
+            	    		$('.stars_'+movieID).barrating({
+            	    	        theme: 'fontawesome-stars',
+            	    	        initialRating: parseFloat(movieInfo[2])%5, // dev purpose only (mod 5)
+            	    	        readonly: true
+            	    	      });
+            	    		
+            	    		item_counter++;
+            	    	});
+                    },
+                });
+        		
+        	});
+        	
+  	
+        }
+	});
+	
+}
+   
 
 function html_modalMovie(movieID, movieInfoMap) {
 	html = '<!-- Modal -->';
