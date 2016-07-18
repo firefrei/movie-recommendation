@@ -6,21 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- <base href="files/"> -->
+    <meta name="author" content="Matthias Frei, Simon Ganz">
     <link rel="icon" href="favicon.ico">
 
     <title>Movie Recommendation System</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="files/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="files/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+    <!--[if lt IE 9]><script src="files/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="files/assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -29,48 +28,32 @@
     <![endif]-->
     
     <!-- Rating starts -->
-	<link rel="stylesheet" href="jquery-bar-rating/dist/themes/fontawesome-stars.css">
+	<link rel="stylesheet" href="files/jquery-bar-rating/dist/themes/fontawesome-stars.css">
 
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
-    <link href="custom/css/loading.css" rel="stylesheet">
-    <link href="custom/css/circle.css" rel="stylesheet">
-    <link href="custom/css/movrec.css" rel="stylesheet">
+    <link href="files/carousel.css" rel="stylesheet">
+    <link href="files/custom/css/loading.css" rel="stylesheet">
+    <link href="files/custom/css/circle.css" rel="stylesheet">
+    <link href="files/custom/css/movrec.css" rel="stylesheet">
   </head>
-<!-- NAVBAR
-================================================== -->
+
   <body>
+  
+  
+  <!-- NAVBAR -->
     <div class="navbar-wrapper">
       <div class="container">
 
         <nav class="navbar navbar-inverse navbar-static-top">
           <div class="container">
             <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
               <a class="navbar-brand" href="#" onclick="insertView_start()">Movie Recommendation System</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active menu_start"><a href="#" onclick="insertView_start()">Home</a></li>
+                <li class="menu_ratings"><a href="#" onclick="insertView_ratings()">Recommendations</a></li>
                 <li class="menu_genres"><a href="#" onclick="insertView_genres()">Genres</a></li>
-                <li class="menu_ratings"><a href="#" onclick="insertView_ratings()">recommendation</a></li>
-                <!--<li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>-->
               </ul>
             </div>
           </div>
@@ -79,9 +62,8 @@
       </div>
     </div>
 
-
+	<!-- CONTENT -->
     <div id="content-area">
-    
     
     </div> 
 
@@ -98,17 +80,17 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="dist/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="files/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="files/dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="assets/js/vendor/holder.min.js"></script>
+    <script src="files/assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="files/assets/js/ie10-viewport-bug-workaround.js"></script>
     <!-- rating stars -->
-    <script src="jquery-bar-rating/jquery.barrating.js"></script>
+    <script src="files/jquery-bar-rating/jquery.barrating.js"></script>
     
     
     <!-- MovRec Scripts -->
-    <script src="custom/js/movrec.js"></script>
+    <script src="files/custom/js/movrec.js"></script>
   </body>
 </html>

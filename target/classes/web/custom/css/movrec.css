@@ -9,11 +9,6 @@ h4 {
 }
 
 .carousel-caption img.poster {
-	/*min-width: 0;
-	left: 0;
-	right: 0;
-	margin: 0 auto; */
-	
 	vertical-align: middle;
 	max-height: 500px;
 }
@@ -43,14 +38,22 @@ h4 {
 
 .modal-body {
 	padding: 15px 30px;
+	overflow-wrap: break-word;
+	overflow: hidden;
 }
 
-.featurette-heading {
+.featurette .featurette-heading {
 	margin-top: 30px;
+	font-size: 30px;
 }
 .featurette-divider {
-	margin: 30px 0;
+	margin: 15px 0;
 }
+
+.featurette .lead.desc {
+	font-size: 16px;
+}
+
 
 .br-wrapper, .br-widget {
 	display: inline;
@@ -59,7 +62,7 @@ h4 {
 }
 
 .rating-results {
-	
+	padding: 50px 0;
 }
 
 .rating-votes {
@@ -76,6 +79,9 @@ h4 {
 	vertical-align: middle;
 }
 
+.genres button {
+	margin: 3px;
+}
 
 button.btn-circle, 
 .btn-circle {
