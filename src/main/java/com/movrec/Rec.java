@@ -40,9 +40,9 @@ public class Rec {
 	public static void main(String[] args) {
 		
 		// SETUP
-		// Simon
 		String basepath = "/home/bar/uni/master/s2/Big_Data_Praktikum/";
-			
+		
+		// Initialize SparkContext
 	    SparkConf conf = new SparkConf().setAppName("Movie Recommendation");
 	    conf.setMaster("local[2]");
 	    sc = new JavaSparkContext(conf);
@@ -54,12 +54,14 @@ public class Rec {
 	    ratings = parseRatings(basepath+"ml-latest-small/ratings.csv", sc);
 	    movieRatings = generateMovieRatings(basepath + "ml-latest-small/ratings.csv");
 	    
-	    	     
+	    
+	    // Close the SparkContext
 	    System.out.println("Done");
 	    sc.close();
 	  }
 	
 	public Rec() {
+		
 		// Spark setup
 	    SparkConf conf = new SparkConf().setAppName("Movie Recommendation");
 	    conf.setMaster("local[4]");
@@ -91,7 +93,7 @@ public class Rec {
 			return rating;
 		}
 		
-		// Parse the given CSV file and returns a hashmap of the content.
+		// Parse the given CSV file and returns a HashMap of the content.
 		public static HashMap<Integer,List<String>> parseCSVFile(String pathToCSV) {
 			HashMap<Integer,List<String>> movieInformation = new HashMap<Integer,List<String>>();
 		    
@@ -170,24 +172,12 @@ public class Rec {
 				JavaRDD<Rating> userRating = sc.parallelize(ratingList);
 				ratings = ratings.union(userRating);
 			}
-			/*
-			Iterator<Map.Entry<Integer,Double>> it = userRatings.entrySet().iterator();
-			while(it.hasNext()) {
-				Map.Entry<Integer,Double> pair = (Map.Entry<Integer,Double>)it.next();
-				Rating rating = new Rating(0,(Integer)pair.getKey(),(Double)pair.getValue());
-				List<Rating> ratingList = Arrays.asList(rating);
-				JavaRDD<Rating> userRating = sc.parallelize(ratingList);
-				ratings = ratings.union(userRating);
-				
-/*				Iterator<Rating> itR = ratings.toLocalIterator();
-				while (itR.hasNext()) {
-					System.out.println(itR.next());
-				}
-				
-			}*/
+
+			// Call recommendation function to get n recommended movies
 			Rating[] recommendedMovies = recommendMovies(n);
 			Map<Integer,List<String>> products = new HashMap<Integer, List<String>>();
 			
+			// Add movie informations to the recommended movies.
 			for(int i=0; i<recommendedMovies.length; ++i) {
 				String ranking = recommendedMovies[i].toString();
 				String delims = "[,]";
@@ -231,6 +221,7 @@ public class Rec {
 					int movieId = Integer.parseInt(movie[1]);
 					double rating = Double.parseDouble(movie[2]);
 					
+					// Check if genre is allready in the map.
 					if(movieRatings.containsKey(movieId)) {
 						Pair<Integer,Double> oldPair = movieRatings.get(movieId);
 						Pair<Integer,Double> newPair = new Pair<Integer,Double>(oldPair.first()+1,oldPair.second()+rating);
@@ -254,6 +245,7 @@ public class Rec {
 					}
 				}
 			}
+			// Compute the rating of each movie
 			Map<Integer,Double> movRating = new HashMap<Integer,Double>();
 			Iterator<Entry<Integer, Pair<Integer, Double>>> it = movieRatings.entrySet().iterator();
 			while (it.hasNext()) {
