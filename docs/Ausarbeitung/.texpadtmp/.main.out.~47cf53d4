@@ -1,0 +1,54 @@
+\BOOKMARK [0][-]{section*.3}{Abk\374rzungsverzeichnis}{}% 1
+\BOOKMARK [0][-]{chapter*.5}{Abbildungsverzeichnis}{}% 2
+\BOOKMARK [0][-]{chapter*.5}{Codebeispielverzeichnis}{}% 3
+\BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 4
+\BOOKMARK [1][-]{section.1.1}{Motivation}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.2}{Hintergrund und Ziele}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.3}{Aufbau der Arbeit}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Stand der Technik}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Audiostreaming}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{Mobilfunknetze}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.3}{Codecs}{chapter.2}% 11
+\BOOKMARK [0][-]{chapter.3}{Aufbau des Messsystems}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Vor\374berlegungen zur Messmethode}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.2}{Server}{chapter.3}% 14
+\BOOKMARK [2][-]{subsection.3.2.1}{Auswahl des Servers}{section.3.2}% 15
+\BOOKMARK [2][-]{subsection.3.2.2}{Konfiguration des Servers}{section.3.2}% 16
+\BOOKMARK [2][-]{subsection.3.2.3}{Besonderheit bei der Dauer einer TCP-Verbindung}{section.3.2}% 17
+\BOOKMARK [1][-]{section.3.3}{Client}{chapter.3}% 18
+\BOOKMARK [2][-]{subsection.3.3.1}{Konzeption der Applikation \214CellWalker\215}{section.3.3}% 19
+\BOOKMARK [2][-]{subsection.3.3.2}{Logischer Ablauf des Streamings}{section.3.3}% 20
+\BOOKMARK [2][-]{subsection.3.3.3}{Implementierung}{section.3.3}% 21
+\BOOKMARK [1][-]{section.3.4}{Aufbau der Messprotokollierung}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.4.1}{viewInfo Protokolleintrag und Beginn einer Messung}{section.3.4}% 23
+\BOOKMARK [2][-]{subsection.3.4.2}{Synchroner Protokolleintrag}{section.3.4}% 24
+\BOOKMARK [2][-]{subsection.3.4.3}{Asynchroner Protokolleintrag}{section.3.4}% 25
+\BOOKMARK [0][-]{chapter.4}{Aufbau des Analysesystems}{}% 26
+\BOOKMARK [1][-]{section.4.1}{Architektur und Implementierung}{chapter.4}% 27
+\BOOKMARK [2][-]{subsection.4.1.1}{Hauptprogramm}{section.4.1}% 28
+\BOOKMARK [2][-]{subsection.4.1.2}{Ausgabemodul: Interaktive Karte}{section.4.1}% 29
+\BOOKMARK [2][-]{subsection.4.1.3}{Ausgabemodul: Statistiken}{section.4.1}% 30
+\BOOKMARK [2][-]{subsection.4.1.4}{Ausgabemodul: Graphen}{section.4.1}% 31
+\BOOKMARK [1][-]{section.4.2}{Zusammenfassung und Bedienungsanleitung}{chapter.4}% 32
+\BOOKMARK [0][-]{chapter.5}{Auswertung und Ergebnisse}{}% 33
+\BOOKMARK [1][-]{section.5.1}{Durchf\374hrung der Messungen}{chapter.5}% 34
+\BOOKMARK [2][-]{subsection.5.1.1}{Auswahl der Messstrecke}{section.5.1}% 35
+\BOOKMARK [2][-]{subsection.5.1.2}{Parallele uns sequentielle Messung}{section.5.1}% 36
+\BOOKMARK [2][-]{subsection.5.1.3}{Messplan}{section.5.1}% 37
+\BOOKMARK [2][-]{subsection.5.1.4}{Steigerung der durchschnittlichen Downloadrate}{section.5.1}% 38
+\BOOKMARK [1][-]{section.5.2}{Durchschnittliche Qualit\344t des Streams in 2G und 3G Netzen}{chapter.5}% 39
+\BOOKMARK [2][-]{subsection.5.2.1}{Auslastung des Puffers}{section.5.2}% 40
+\BOOKMARK [2][-]{subsection.5.2.2}{Ausspielverhalten und Unterbrechungen}{section.5.2}% 41
+\BOOKMARK [2][-]{subsection.5.2.3}{Dienstg\374te in der Stadt, auf dem Land und auf der Autobahn}{section.5.2}% 42
+\BOOKMARK [1][-]{section.5.3}{Auff\344lligkeiten in den Messdaten}{chapter.5}% 43
+\BOOKMARK [2][-]{subsection.5.3.1}{Unterbrechung in der Daten\374bertragung}{section.5.3}% 44
+\BOOKMARK [2][-]{subsection.5.3.2}{\334berg\344nge zwischen Datennetzen \(2G<->3G\)}{section.5.3}% 45
+\BOOKMARK [1][-]{section.5.4}{Zusammenfassung und Interpretation}{chapter.5}% 46
+\BOOKMARK [0][-]{chapter.6}{Ausblick}{}% 47
+\BOOKMARK [0][-]{chapter.6}{Eidesstattliche Erkl\344rung}{}% 48
+\BOOKMARK [0][-]{section*.28}{Glossar}{}% 49
+\BOOKMARK [0][-]{appendix.A}{Statistiken der Messfahrten}{}% 50
+\BOOKMARK [1][-]{section.A.1}{8 KBit/s Decoder - 30/5sec Puffer}{appendix.A}% 51
+\BOOKMARK [1][-]{section.A.2}{16 KBit/s Decoder - 30/5sec Puffer}{appendix.A}% 52
+\BOOKMARK [1][-]{section.A.3}{32 KBit/s Decoder - 30/5sec Puffer}{appendix.A}% 53
+\BOOKMARK [1][-]{section.A.4}{64 KBit/s Decoder - 30/5sec Puffer}{appendix.A}% 54

@@ -1,0 +1,221 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\catcode `"\active 
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@newglossary{main}{glg}{gls}{glo}
+\@newglossary{acronym}{alg}{acr}{acn}
+\@istfilename{main.ist}
+\@glsorder{word}
+\select@language{ngerman}
+\@writefile{toc}{\select@language{ngerman}}
+\@writefile{lof}{\select@language{ngerman}}
+\@writefile{lot}{\select@language{ngerman}}
+\gdef \LT@i {\LT@entry 
+    {1}{64.68436pt}\LT@entry 
+    {1}{246.00238pt}}
+\@writefile{toc}{\contentsline {chapter}{Abk\IeC {\"u}rzungsverzeichnis}{I}{section*.3}}
+\citation{lit:Tec1}
+\citation{lit:xhe}
+\@writefile{lof}{\addcontentsline {toc}{chapter}{Abbildungsverzeichnis}}
+\@writefile{toc}{\contentsline {chapter}{Abbildungsverzeichnis}{II}{chapter*.5}}
+\@writefile{toc}{\contentsline {chapter}{Codebeispielverzeichnis}{III}{chapter*.5}}
+\citation{lit:Int1}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Hintergrund und Ziele}{1}{section.1.2}}
+\newlabel{hintergrund-ziele}{{1.2}{1}{Hintergrund und Ziele}{section.1.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}Aufbau der Arbeit}{3}{section.1.3}}
+\citation{lit:Tec2}
+\citation{lit:Tec1}
+\citation{lit:Tec1}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Stand der Technik}{4}{chapter.2}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{technik}{{2}{4}{Stand der Technik}{chapter.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Audiostreaming}{4}{section.2.1}}
+\newlabel{technik-streaming}{{2.1}{4}{Audiostreaming}{section.2.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Mobilfunknetze}{4}{section.2.2}}
+\newlabel{technik-mobilfunknetze}{{2.2}{4}{Mobilfunknetze}{section.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Theoretische Downloadraten der Datennetztechnologien in KBit/s (Raten entnommen aus Quelle \citep  {lit:Tec1})\relax }}{5}{figure.caption.7}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{pic:datennetztechnologien}{{2.1}{5}{Theoretische Downloadraten der Datennetztechnologien in KBit/s (Raten entnommen aus Quelle \citep {lit:Tec1})\relax }{figure.caption.7}{}}
+\citation{lit:xhe}
+\citation{lit:xhe}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Codecs}{6}{section.2.3}}
+\newlabel{codecs}{{2.3}{6}{Codecs}{section.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Fraunhofer \gls {abk:iis} \gls {abk:aac} \gls {codec}-Familie (vgl. Quelle \citep  {lit:xhe})\relax }}{6}{figure.caption.8}}
+\newlabel{pic:FraunhoferIIS_Composition_Extended_HE-AAC}{{2.2}{6}{Fraunhofer \gls {abk:iis} \gls {abk:aac} \gls {codec}-Familie (vgl. Quelle \citep {lit:xhe})\relax }{figure.caption.8}{}}
+\citation{lit:Srv3}
+\citation{lit:Srv2}
+\citation{lit:Srv4}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Aufbau des Messsystems}{7}{chapter.3}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{aufbau-messung}{{3}{7}{Aufbau des Messsystems}{chapter.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Vor\IeC {\"u}berlegungen zur Messmethode}{7}{section.3.1}}
+\newlabel{vorueberlegungen-messmethode}{{3.1}{7}{Vorüberlegungen zur Messmethode}{section.3.1}{}}
+\citation{lit:Srv5}
+\citation{lit:Srv1}
+\citation{lit:NET}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Server}{8}{section.3.2}}
+\newlabel{server}{{3.2}{8}{Server}{section.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}Auswahl des Servers}{8}{subsection.3.2.1}}
+\newlabel{server-auswahl}{{3.2.1}{8}{Auswahl des Servers}{subsection.3.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}Konfiguration des Servers}{8}{subsection.3.2.2}}
+\newlabel{server-konfiguration}{{3.2.2}{8}{Konfiguration des Servers}{subsection.3.2.2}{}}
+\newlabel{lst:httpget}{{3.1}{9}{Mitschnitt einer HTTP-GET Anfrage des CellWalkers an den Server}{lstlisting.3.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.1}Mitschnitt einer HTTP-GET Anfrage des CellWalkers an den Server}{9}{lstlisting.3.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Besonderheit bei der Dauer einer TCP-Verbindung}{9}{subsection.3.2.3}}
+\newlabel{probleme-einfl\IeC {\"u}sse}{{3.2.3}{9}{Besonderheit bei der Dauer einer TCP-Verbindung}{subsection.3.2.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Client}{10}{section.3.3}}
+\newlabel{client}{{3.3}{10}{Client}{section.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Konzeption der Applikation \glqq CellWalker\grqq }{10}{subsection.3.3.1}}
+\newlabel{cell-walker-konzeption}{{3.3.1}{10}{Konzeption der Applikation \glqq CellWalker\grqq }{subsection.3.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Logischer Ablauf des Streamings}{11}{subsection.3.3.2}}
+\newlabel{cell-walker-logik}{{3.3.2}{11}{Logischer Ablauf des Streamings}{subsection.3.3.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Logischer Aufbau des CellWalkers im \IeC {\"U}berblick\relax }}{11}{figure.caption.10}}
+\newlabel{pic:cell-walker-aufbau}{{3.1}{11}{Logischer Aufbau des CellWalkers im Überblick\relax }{figure.caption.10}{}}
+\citation{lit:Pro1}
+\citation{lit:Clt1}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Implementierung}{13}{subsection.3.3.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Bildschirmfoto des CellWalkers mit einem 16 KBit/s Decoder, 30 Sekunden Puffer und einer Ausspielschwelle von 5 Sekunden\relax }}{15}{figure.caption.11}}
+\newlabel{pic:cell-walker-screenshot}{{3.2}{15}{Bildschirmfoto des CellWalkers mit einem 16 KBit/s Decoder, 30 Sekunden Puffer und einer Ausspielschwelle von 5 Sekunden\relax }{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Aufbau der Messprotokollierung}{17}{section.3.4}}
+\newlabel{messprotokollierung-aufbau}{{3.4}{17}{Aufbau der Messprotokollierung}{section.3.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}\gls {view}Info Protokolleintrag und Beginn einer Messung}{17}{subsection.3.4.1}}
+\newlabel{lst:viewinfo}{{3.2}{17}{Beispiel eines ViewInfo-Protokolleintrags des CellWalkers}{lstlisting.3.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.2}Beispiel eines ViewInfo-Protokolleintrags des CellWalkers}{17}{lstlisting.3.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Synchroner Protokolleintrag}{18}{subsection.3.4.2}}
+\newlabel{lst:synchronous}{{3.3}{18}{Beispiel eines synchronen Protokolleintrags des CellWalkers}{lstlisting.3.3}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.3}Beispiel eines synchronen Protokolleintrags des CellWalkers}{18}{lstlisting.3.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Asynchroner Protokolleintrag}{21}{subsection.3.4.3}}
+\newlabel{lst:asynchronous}{{3.4}{21}{Beispiel eines asynchronen Protokolleintrags des CellWalkers}{lstlisting.3.4}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3.4}Beispiel eines asynchronen Protokolleintrags des CellWalkers}{21}{lstlisting.3.4}}
+\citation{lit:Aus1}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Aufbau des Analysesystems}{22}{chapter.4}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{cell-watcher-aufbau}{{4}{22}{Aufbau des Analysesystems}{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Architektur und Implementierung}{22}{section.4.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Aufbau des CellWatchers im \IeC {\"U}berblick\relax }}{23}{figure.caption.12}}
+\newlabel{pic:cell-watcher-aufbau}{{4.1}{23}{Aufbau des CellWatchers im Überblick\relax }{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Hauptprogramm}{23}{subsection.4.1.1}}
+\citation{lit:Aus2}
+\citation{lit:Aus3}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Ausgabemodul: Interaktive Karte}{24}{subsection.4.1.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Funktionsweise der interaktiven Karte des CellWatchers. Die Informationen des rot umrandeten Punkts werden eingeblendet.\relax }}{25}{figure.caption.13}}
+\newlabel{pic:ergebnisse-cell-watcher-map-detail}{{4.2}{25}{Funktionsweise der interaktiven Karte des CellWatchers. Die Informationen des rot umrandeten Punkts werden eingeblendet.\relax }{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Exemplarische CellWatcher Graphenausgabe von Rohdaten einer Messfahrt f\IeC {\"u}r Analysezwecke\relax }}{26}{figure.caption.14}}
+\newlabel{pic:ergebnisse-cell-watcher-graph}{{4.3}{26}{Exemplarische CellWatcher Graphenausgabe von Rohdaten einer Messfahrt für Analysezwecke\relax }{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.3}Ausgabemodul: Statistiken}{26}{subsection.4.1.3}}
+\citation{lit:Aus1}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Histogramm der gemessenen Downloadraten bei Chunkgr\IeC {\"o}\IeC {\ss }en zwischen 8 und 40 KB\relax }}{29}{figure.caption.15}}
+\newlabel{pic:ergebnisse-cell-watcher-histogram}{{4.4}{29}{Histogramm der gemessenen Downloadraten bei Chunkgrößen zwischen 8 und 40 KB\relax }{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.4}Ausgabemodul: Graphen}{29}{subsection.4.1.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Zusammenfassung und Bedienungsanleitung}{30}{section.4.2}}
+\newlabel{cell-watcher-zusammenfassung}{{4.2}{30}{Zusammenfassung und Bedienungsanleitung}{section.4.2}{}}
+\newlabel{lst:cellwatcherstart}{{4.1}{30}{Starten des CellWatchers}{lstlisting.4.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.1}Starten des CellWatchers}{30}{lstlisting.4.1}}
+\newlabel{lst:dataitem}{{4.2}{30}{Beispiel für das Einlesen einer Protokolldatei}{lstlisting.4.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.2}Beispiel f\IeC {\"u}r das Einlesen einer Protokolldatei}{30}{lstlisting.4.2}}
+\newlabel{lst:cellwatchermodules}{{4.3}{31}{Beispiel für das De-/Aktivieren von Modulen des CellWatchers}{lstlisting.4.3}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.3}Beispiel f\IeC {\"u}r das De-/Aktivieren von Modulen des CellWatchers}{31}{lstlisting.4.3}}
+\newlabel{lst:cellwatcherport}{{4.4}{31}{Portkonfiguration der interaktiven Karte des CellWatchers}{lstlisting.4.4}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.4}Portkonfiguration der interaktiven Karte des CellWatchers}{31}{lstlisting.4.4}}
+\newlabel{lst:cellwatcherurl}{{4.5}{31}{URL der interaktiven Karte des CellWatchers}{lstlisting.4.5}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {4.5}URL der interaktiven Karte des CellWatchers}{31}{lstlisting.4.5}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Auswertung und Ergebnisse}{32}{chapter.5}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Durchf\IeC {\"u}hrung der Messungen}{32}{section.5.1}}
+\newlabel{ergebnisse-durchfuehrung}{{5.1}{32}{Durchführung der Messungen}{section.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Auswahl der Messstrecke}{32}{subsection.5.1.1}}
+\newlabel{auswahl-strecke}{{5.1.1}{32}{Auswahl der Messstrecke}{subsection.5.1.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Bildschirmfoto der gesamten Messstrecke durch die interaktive Karte des CellWatchers (Fahrtrichtung entlang der Pfeile)\relax }}{33}{figure.caption.16}}
+\newlabel{pic:ergebnisse-gesammte-messstrecke}{{5.1}{33}{Bildschirmfoto der gesamten Messstrecke durch die interaktive Karte des CellWatchers (Fahrtrichtung entlang der Pfeile)\relax }{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Parallele uns sequentielle Messung}{34}{subsection.5.1.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Vergleich von jeweils drei Fahrten mit sequentieller und paralleler Messung (Fahrzeit: ca. 2h; Medienbitrate: 16 KBit/s)\relax }}{34}{figure.caption.17}}
+\newlabel{pic:ergebnisse-vergleich-sequentiell-parallel}{{5.2}{34}{Vergleich von jeweils drei Fahrten mit sequentieller und paralleler Messung (Fahrzeit: ca. 2h; Medienbitrate: 16 KBit/s)\relax }{figure.caption.17}{}}
+\citation{lit:HER}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Messplan}{35}{subsection.5.1.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Testplan der f\IeC {\"u}r die Auswertung relevanten Messfahrten\relax }}{35}{figure.caption.18}}
+\newlabel{pic:ergebnisse-testplan}{{5.3}{35}{Testplan der für die Auswertung relevanten Messfahrten\relax }{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.4}Steigerung der durchschnittlichen Downloadrate}{36}{subsection.5.1.4}}
+\newlabel{ergebnisse-downloadverhalten}{{5.1.4}{36}{Steigerung der durchschnittlichen Downloadrate}{subsection.5.1.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Gemessene verf\IeC {\"u}gbare Downloadraten im Vergleich zur angeforderten Chunkgr\IeC {\"o}\IeC {\ss }e\relax }}{37}{figure.caption.19}}
+\newlabel{pic:ergebnisse-verfuegbare-bitraten}{{5.4}{37}{Gemessene verfügbare Downloadraten im Vergleich zur angeforderten Chunkgröße\relax }{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Durchschnittliche Qualit\IeC {\"a}t des Streams in 2G und 3G Netzen}{37}{section.5.2}}
+\newlabel{ergebnisse-quaitaet}{{5.2}{37}{Durchschnittliche Qualität des Streams in 2G und 3G Netzen}{section.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Auslastung des Puffers}{37}{subsection.5.2.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Histogramm \IeC {\"u}ber die Verteilung der Pufferauslastung ohne Ber\IeC {\"u}cksichtigung des Datennetzes\relax }}{38}{figure.caption.20}}
+\newlabel{pic:ergebnisse-verteilung-pufferauslastung}{{5.5}{38}{Histogramm über die Verteilung der Pufferauslastung ohne Berücksichtigung des Datennetzes\relax }{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Histogramm \IeC {\"u}ber die Verteilung der Pufferauslastung im 2G-Netz\relax }}{39}{figure.caption.21}}
+\newlabel{pic:ergebnisse-verteilung-pufferauslastung-2G}{{5.6}{39}{Histogramm über die Verteilung der Pufferauslastung im 2G-Netz\relax }{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Ausspielverhalten und Unterbrechungen}{39}{subsection.5.2.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Histogramm \IeC {\"u}ber das Ausspielverhalten dargestellt durch Pufferunterl\IeC {\"a}ufe und Unterbrechungen\relax }}{40}{figure.caption.22}}
+\newlabel{pic:ergebnisse-ausspielverhalten}{{5.7}{40}{Histogramm über das Ausspielverhalten dargestellt durch Pufferunterläufe und Unterbrechungen\relax }{figure.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces Abstand zwischen zwei Ausspielstops im Durchschnitt\relax }}{41}{figure.caption.23}}
+\newlabel{pic:ergebnisse-ausspielstop-abstand}{{5.8}{41}{Abstand zwischen zwei Ausspielstops im Durchschnitt\relax }{figure.caption.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Dauer einer Unterbrechung im Durchschnitt\relax }}{42}{figure.caption.24}}
+\newlabel{pic:ergebnisse-ausspielstop-dauer}{{5.9}{42}{Dauer einer Unterbrechung im Durchschnitt\relax }{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Dienstg\IeC {\"u}te in der Stadt, auf dem Land und auf der Autobahn}{42}{subsection.5.2.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Auff\IeC {\"a}lligkeiten in den Messdaten}{44}{section.5.3}}
+\newlabel{ergebnisse-auffaelligkeiten}{{5.3}{44}{Auffälligkeiten in den Messdaten}{section.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Unterbrechung in der Daten\IeC {\"u}bertragung}{44}{subsection.5.3.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Beispiel f\IeC {\"u}r netzbedingte und \IeC {\"o}rtlich reproduzierbare Unterbrechung des Streams (Fahrtrichtung von oben kommend)\relax }}{45}{figure.caption.25}}
+\newlabel{pic:ergebnisse-datennetz-ausfall}{{5.10}{45}{Beispiel für netzbedingte und örtlich reproduzierbare Unterbrechung des Streams (Fahrtrichtung von oben kommend)\relax }{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}\IeC {\"U}berg\IeC {\"a}nge zwischen Datennetzen (2G<->3G)}{45}{subsection.5.3.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Unterbrechung des 2G-Netzes durch ein besser ausgebautes Stadtgebiet (Fahrtrichtung von oben kommend)\relax }}{46}{figure.caption.26}}
+\newlabel{pic:ergebnisse-datennetzuebergang-ansbach-fahrtA}{{5.11}{46}{Unterbrechung des 2G-Netzes durch ein besser ausgebautes Stadtgebiet (Fahrtrichtung von oben kommend)\relax }{figure.caption.26}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Zusammenfassung und Interpretation}{47}{section.5.4}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Ausblick}{48}{chapter.6}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ausblick}{{6}{48}{Ausblick}{chapter.6}{}}
+\@writefile{toc}{\contentsline {chapter}{Eidesstattliche Erkl\IeC {\"a}rung}{50}{chapter.6}}
+\citation{*}
+\bibstyle{unsrtdin}
+\bibdata{literatur}
+\@writefile{toc}{\contentsline {chapter}{Glossar}{51}{section*.28}}
+\bibcite{lit:Tec1}{{1}{}{{}}{{}}}
+\bibcite{lit:xhe}{{2}{}{{}}{{}}}
+\bibcite{lit:Int1}{{3}{}{{}}{{}}}
+\bibcite{lit:Tec2}{{4}{}{{}}{{}}}
+\bibcite{lit:Srv3}{{5}{}{{}}{{}}}
+\bibcite{lit:Srv2}{{6}{}{{}}{{}}}
+\bibcite{lit:Srv4}{{7}{}{{}}{{}}}
+\bibcite{lit:Srv5}{{8}{}{{}}{{}}}
+\bibcite{lit:Srv1}{{9}{}{{}}{{}}}
+\bibcite{lit:NET}{{10}{}{{}}{{}}}
+\bibcite{lit:Pro1}{{11}{}{{}}{{}}}
+\bibcite{lit:Clt1}{{12}{}{{}}{{}}}
+\bibcite{lit:Aus1}{{13}{}{{}}{{}}}
+\bibcite{lit:Aus2}{{14}{}{{}}{{}}}
+\bibcite{lit:Aus3}{{15}{}{{}}{{}}}
+\bibcite{lit:HER}{{16}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Statistiken der Messfahrten}{54}{appendix.A}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{apx:stats}{{A}{54}{Statistiken der Messfahrten}{appendix.A}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}8 KBit/s Decoder - 30/5sec Puffer}{54}{section.A.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}16 KBit/s Decoder - 30/5sec Puffer}{56}{section.A.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.3}32 KBit/s Decoder - 30/5sec Puffer}{58}{section.A.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.4}64 KBit/s Decoder - 30/5sec Puffer}{60}{section.A.4}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers

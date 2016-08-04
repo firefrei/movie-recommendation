@@ -1,0 +1,9 @@
+\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
+\begin{theglossary}\glossaryheader
+\glsgroupheading{A}\relax \glsresetentrylist %
+\glossentry{abk:aac}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{I\delimN II}}}\glsgroupskip
+\glsgroupheading{I}\relax \glsresetentrylist %
+\glossentry{abk:iis}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{II}}}%
+\end{theglossary}\glossarypostamble

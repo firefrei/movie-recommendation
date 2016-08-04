@@ -1,0 +1,160 @@
+\chapter{Einleitung}
+In diesem Projekt soll ein \glqq Movie Recommendation System\grqq{} mithilfe des Frameworks Spark\cite{lit:INET1} umgesetzt werden.\\
+Das System soll dabei zunächst mit einer festen Anzahl an Nutzern, Filmen und Bewertungen trainiert werden, um anschließend Vorhersagen für Filme zu treffen, die einem bestimmten Nutzer gefallen könnten. Die hierfür verwendeten Daten werden von der Plattform Movielens\cite{lit:INET4} bezogen.\\
+Die notwendigen Daten finden sich in einer CSV Datei mit dem Name \lstinline{ratings.csv}. Jede Zeile besteht aus einer Nutzer-Id, einer Film-Id, einer Bewertung und einem Zeitstempel. Das System soll nun Bewertungen für die Nutzer-Film-Paare vorhersagen, die in dieser Datei nicht aufgelistet sind.\\
+Diese Vorhersagen werden durch den Einsatz eines Machine-Learing-Algorithmus auf den gegebenen Daten generiert.\\\\
+Im Folgenden werden das Framework Apache Spark und der in diesem Projekt verwendete Algorithmus kurz vorgestellt.
+
+
+\chapter{Apache Spark}
+
+Apache Spark ist ein \glqq Cluster Computing Framework\grqq{} das aus mehreren einzelnen Komponenten besteht. Die Grundlage des Spark Systems wird dabei durch den \glqq Spark Core\grqq{} gebildet. Er stellt die grundlegenden Funktionalitäten wie beispielsweise die Aufgabenverteilung, die Ein- und Ausgabe von Daten oder das Scheduling von Prozessen zur Verfügung.\\\\
+Spark verwendet als Datenstruktur das sogenannten \glqq Resilient Distributed Dataset\grqq{} (RDD) auf denen die entsprechenden Spark-Operationen ausgeführt werden. RDDs können dabei auf mehrere Rechner verteilt werden um parallele Berechnungen zu ermöglichen. Sie werden entweder aus externen Quellen gebildet oder als Ausgabe von verschiedenen Transformationsanwendungen erzeugt.\\\\
+Neben dem \glqq Spark Core\grqq{} stellt die Machine Learning Library (MLlib) einen wichtigen Bestandteil von Spark dar und ist für die Umsetzung des \glqq Recommendation Systems\grqq{} essentiell. Bei der MLlib handelt es sich um eine Funktionsbibliothek, welche verschiedenen Machine-Learing-Algorithmen zur Verfügung stellt. Für das zu konstruierende System werden wir das \glqq Collaborative Filtering\grqq{} verwenden, das im nächsten Abschnitt kurz erklärt wird.
+
+
+
+
+\chapter{Collaborative Filtering und ALS}
+
+\glqq Collaborative Filtering\grqq{} ist eine weitverbreitete Technik für \glqq Recommendation Systems\grqq.\\
+Diese Methode begründet sich durch die Annahme, dass falls zwei Personen A und B das selbe Interesse bezüglich einer Sache X haben, es wahrscheinlicher ist, dass Person A in einer anderen Sache Y mit B übereinstimmt, als mit einer anderen zufälligen Person. Im Fall des \glqq Movie Recommendation System\grqq{} bedeutet das, dass einem Nutzer Filme eines anderen Nutzers gefallen könnten, wenn beide Nutzer bestimmte Filme ähnlich gut bewertet haben.\\\\
+Um diese Filmvorschläge zu bestimmen müssen die leeren Einträge der Nutzer-Film-Matrix ausgefüllt werden. Diese Lücken entstehen wenn ein Nutzer noch keine Wertung für einen Film gesetzt hat. Die vorhergesagten Werte können dann als Empfehlungen an den Nutzer interpretiert werden.
+Die Umsetzung in Spark erfolgt durch den \glqq Alternating Least Squares\grqq{} (ALS) Algorithmus. Dieser Algorithmus schätzt durch eine Faktorisierung der Nutzer-Film-Matix die fehlenden Einträge. Hierzu wird abwechselnd einer der beiden Matrizen festgehalten und das daraus resultierende quadratische Gleichungssystem gelöst. So können die fehlenden Einträge der Matrix iterativ berechnet werden.
+Als Eingabe fordert der Algorithmus die Nutzer-Film-Matrix, die zuvor aus einer CSV Datei eingelesen wird. Für die weiteren Parameter werden die default Werte verwendet. In Kapitel \ref{aufbau} wird ein kurzer Überblick über den Ablauf des Systems vom Einlesen bis zur Ausgabe der Ergebnisse gegeben.
+
+
+\subsection{Umsetzung}
+Zunächst müssen die gegebenen Daten aus den von MovieLens\citep{lit:INET4} bereitgestellten CSV-Dateien eingelesen werden (movies.csv, ratings.csv, links.csv). Die eingelesenen Dateien werden in gleichnamige HashMaps abgelegt, um später effizient auf die einzelnen Filminformationen zugreifen zu können. \\\\ Um nun Filmvorschlägen generieren zu können werden dafür n bewertete Film benötigt. Diese müssen im Format $movie\_id,rating$ vorliegen. Die Filme werden anschließend mit der $user\_id=0$ in die Nutzer-Film-Matrix eingefügt, welche durch das JavaRDD $ratings$ repräsentiert wird.\\\\
+Über die Funktion \textit{recommendMovies(int n)} können nun n Filmvorschläge generiert werden. Dafür wird zunächst ein \textit{MatrixFactorizationModel} mit den default Werten erzeugt, welches als Eingabe die Nutzer-Film-Matrix fordert.\\ Durch \textit{model.recommendProducts(0,n)} werden dann für den Nutzer mit der $Id=0$ n Filmvorschläge erzeugt. Die Filmvorschläge haben die Form (movie\_id, Empfehlungsquote des ALS) und müssen anschließend mit den Informationen aus den HashMaps angereichter werden, um die gewünschte Form (movie\_id, movie\_title, genre, rating, Empfehlungsquote des ALS, imdb-Id) zu erhalten.\\\\
+Das Rating durch andere Nutzer wird dabei durch den Mittelwert der abgegebene Wertungen der einzelnen Nutzer bestimmt und in einer separaten HashMap gespeichert.\\\\
+Um alle Filme bezüglich einem gegeben Genre abzufragen wurde außerdem eine HashMap erzeugt, welche für jedes mögliche Genre eine Liste von \textit{movie\_ids} führt.
+
+
+\chapter{Benutzerschnittstelle}
+Die Interaktion des Anwenders mit dem Recommendation System erfolgt über eine webbasierte Clientanwendung, welche Anfragen an einen Server im Hintergrund weiterleitet. Der Client basiert auf gängigen Webtechnologien, sodass ein Nutzer sie als normale Webseite/-anwendung öffnen kann. Die Clientapplikation kommuniziert mit dem Server über eine vorher definierte REST-Schnittstelle, auch REST-API genannt.\\
+Der Server beantwortet die Anfrage durch seinen Datenbestand bzw. führt die zur Antwort nötigen Berechnungen darauf aus und gibt das Ergebnis zurück an die Webanwendung.\\
+Der Datenaustausch erfolgt über HTTP im JSON-Format.
+
+\section{Client}
+\subsection{Funktionalitäten}
+Der Benutzer hat in der Webanwendung Zugriff auf drei Ansichten.
+\begin{itemize}
+  \item \textbf{Start}\\
+  	Die Seite \glqq Start\grqq{} ist die Einstiegsseite. Es werden dem Nutzer neun zufällig ausgewählte Filme in zwei unterschiedlichen Darstellungen angezeigt.\\
+  	Die neun Filme werden als sog. \glqq Slider\grqq{} im oberen Teil der Seite als auch als Aufzählung mit rundem Bild (\glqq Blasenform\grqq) darunter angezeigt.
+  \item \textbf{Recommendation}\\
+  	Auf dieser Seite kann der Nutzer zehn zufällig ausgewählte Filme mit Sternen zwischen 1 (schlecht) und 5 (gut) bewerten. Die Filme werden anschließend durch den Server analysiert und es werden dem Nutzer Vorschläge von weiteren Filmen angezeigt, die seinem Geschmack entsprechen könnten. Die Vorschläge basieren auf den Bewertungen anderer Nutzer, also umgangssprachlich auf dem \glqq Nutzer denen XY gefällt, gefällt auch...\grqq-Prinzip.
+  \item \textbf{Genres}\\
+  	Die Seite \glqq Genres\grqq{} ähnelt in ihrer Funktionsweise stark der der \glqq Recommendation\grqq-Seite.\\
+  	Sie bietet dem Anwender zu Beginn eine Übersicht aller verfügbaren bzw. katalogisierten Filmgenres an. Der Benutzer kann durch Anklicken ein Genre auswählen. Ihm werden im Anschluss, analog zur vorherigen Seite, zehn Film vorgelegt, die alle dem gewählten Genre entsprechen. Diese kann der Nutzer wieder mit 1-5 Sternen bewerten, um anschließend eine Auswahl an Filmvorschlägen zu erhalten.\\
+  	Der Nutzen dieser Seite liegt in der Möglichkeit der Beeinflussung des Recommendation-Algorithmuses. Bewertet man alle Filme einer Kategorie bzw. eines Genres extrem schlecht oder extrem gut, ist die Wahrscheinlichkeit vermutlich höher, dass diese in den Vorschlägen vermindert bzw. vermehrt auftreten werden. Allerdings basiert diese Vorgehensweise, bedingt durch den begrenzten Informationsgehalt der Datenquellen, wieder auf den Bewertungen anderer Nutzer. Es wird somit für diese Funktionalität angenommen bzw. vorausgesetzt, dass Anwender, die zum Beispiel einen Dokumentarfilm schlecht bewerten, auch andere Filme des gleichen Genres eher schlecht bewertet haben.  	
+  	\end{itemize}
+
+
+\subsection{Technische Umsetzung}
+Die webbasierte Clientanwendung wurde mit gängigen und modernen Webtechnologien implementiert. Die Applikation basiert auf HTML5 in Kombination mit JavaScript. Für eine einfachere und leicht verständliche Implementierung werden zusätzlich die Frameworks jQuery und Bootstrap\citep{lit:INET3} eingesetzt. Als Designvorlage dient das kostenlose Bootstrap Demotemplate \glqq Carousel\grqq\citep{lit:INET5} (siehe Abbildung \ref{pic:carousel}).\\
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.3]{img/carousel.jpg} 
+\caption{Bildschirmfoto des Carousel-Templates für Bootstrap}
+\label{pic:carousel}
+\end{figure}
+Zusätzliche Informationen über die vom Server ausgelieferten Filme fragt die Clientanwendung selbstständig durch eine Ajax-Anfrage bei der Filmdatenbank IMDB durch die kostenlose Schnittstelle \lstinline{http://www.omdbapi.com} ab. Die von dort nachgeladenen Informationen dienen nur der Information des Anwenders und fließen in keinerlei Berechnungen von Ratings oder Vergleichbarem ein.\\\\
+Um die Webanwendung simpel und überschaubar zu halten, ist der Aufbau einfach strukturiert. Durch Anklicken eines Menüpunktes in der Oberfläche wird eine zugehörige JavaScript-Funktionen aufgerufen, die den für die Seite nötigen Inhalt generieren und mittels jQuery in den gewünschten Container auf der Seite angehängt (z.B. \lstinline{insertView_start()}).\\
+Der gesamte Seiteninhalt befindet sich im Container \lstinline{#content-area}.\\
+Wird eine weitere Seite geladen oder Inhalt mittels einer Ajax-Anfrage vom Server nachgeladen, entfernt ggf. \lstinline{clear_view()} den aktuellen Seiteninhalt und blendet einen Ladebalken ein. Sobald der erforderliche Inhalt eingetroffen ist, wird in der Callback-Funktion der Ajax-Anfrage die Funktion \lstinline{remove_loading()} aufgerufen, die sämtliche Ladebalken entfernt.
+
+\section{Server}
+Die Serveranwendung ist mit der Programmiersprache Java implementiert. Die REST-Schnittstelle wird durch das Framework \glqq Jersey\grqq\citep{lit:INET6} zur Verfügung gestellt. Als Java-basierter Webserver wird Tomcat in Version 7 verwendet.\\\\
+
+\subsection{Statische Dateien}
+Tomcat wird durch standardmäßige Webservlets in der Klasse \lstinline{com.movrec.Web_Files} angewiesen, alle Dateien des Ordners \lstinline{/MovRecTwo/src/main/resources/web} auf Anfrage auszuliefern. Der Ordner kommt demnach dem sog. \glqq Web-Root\grqq{} gleich. Um per URL an die Dateien zu gelangen, muss der Ordner \lstinline{/files/} dem Dateinamen vorangestellt werden.\\
+
+\begin{lstlisting}[caption=Beispiel für den Aufruf einer Datei aus dem Web-Root]
+http://localhost:8080/MovRecTwo/files/custom/js/movrec.js
+\end{lstlisting}
+%ToDo Check URL
+
+Wird keine konkrete Datei angefordert, liefert das Servlet der Klasse \lstinline{com.movrec.Web_Index} die Datei \lstinline{index.html} aus dem Web-Root aus.
+
+
+\subsection{Laden des Spark-Frameworks}
+Wird die Serveranwendung gestartet, übernimmt die Klasse \lstinline{com.movrec.Web_Init} die Initalisierung des Spark-Frameworks. Die erfolgreich erstelle Instanz wird anschließend über das \glqq ServletContext\grqq{} global zur Verfügung gestellt, damit Spark durch API-Aufrufe verwendet werden kann.\\
+Wird der Webserver beendet, kümmert sich die Klasse ebenfalls um die Beendigung von Spark.
+
+
+\subsection{Beschreibung der REST-Schnittstelle}
+Nachfolgend werden die einzelnen REST-APIs aufgeführt und deren Funktionsweise kurz erläutert.\\
+Die Anfragen und Antworten sind jeweils mittels JSON formatiert.
+\begin{itemize}
+  \item \textbf{getRandomMovies()}\\
+  	Die Funktion wird via HTTP-GET aufgerufen.\\
+  	Sie liefert neun zufällig ausgewählte Filme aus dem Datenbestand zurück. Die Rückgabe enthält Key-Value Paare. Als Key definiert ist die Movie-ID aus dem Datenbestand. Das Value ist eine Liste mit den Werten Titel, Genre, IMDB-ID, Rating.\\
+  	Beispiel: \lstinline{ "104177":["From One Second to the Next (2013)","Documentary","3108864","5.0"]}\\
+  \item \textbf{getMoviesForRating()}\\
+ 	Die Funktion wird via HTTP-GET aufgerufen.\\
+	Sie liefert zehn zufällig ausgewählte Filme aus dem Datenbestand zurück. Die Rückgabe enthält Key-Value Paare. Als Key definiert ist die Movie-ID aus dem Datenbestand. Das Value ist eine Liste mit den Werten Titel, Genre und IMDB-ID\\
+  	Beispiel: \lstinline{ "7440":["Paper Clips (2004)","Documentary","0380615"]}\\
+  \item \textbf{setMoviesForRating(@FormParam("ratingData") String ratingData)}\\
+  	Die Funktion wird via HTTP-POST aufgerufen.\\
+  	Als Eingabe erwartet sie Key-Value-Paare. Der Key entspricht der Movie-ID, das Value dem Rating des Nutzers zwischen 1 und 5.\\
+  	Nach erfolgter Berechnung liefert sie sechs Filmvorschläge zurück. Der Key entspricht auch hier der Movie-ID, das Value einer Liste mit Titel, Genres, Rating (anderer Nutzer), Empfehlungsquote des ALS-Algorithmuses und IMDB-ID.\\
+  	Beispiel: \lstinline{ "82":["Antonia's Line (Antonia) (1995)", "Comedy|Drama", "3.45", "4.090390537800163)", "0112379"]}\\
+  \item \textbf{getAllGenres()}\\
+  	Die Funktion wird via HTTP-GET aufgerufen.\\
+  	Sie liefert alle vorkommenden Film-Genres aus dem Datenbestand zurück. Die Rückgabe enthält eine Liste mit den Genre-Bezeichnungen.\\
+  	Beispiel: \lstinline{["Western","Documentary","Sci-Fi"]}\\
+
+  \item \textbf{getMoviesForGenre(@FormParam("genre") String genre)}\\
+ 	Die Funktion wird via HTTP-POST aufgerufen.\\
+  	Als Eingabe erwartet sie ein Key-Value-Paar. Der Key entspricht der Konstante \glqq genre\grqq, das Value den Namen des Genres.\\
+  	Die Rückgabe ist analog zu \lstinline{getMoviesForRating()}.
+  
+\end{itemize}
+
+
+
+
+
+\chapter{Systemkommunikation}
+\label{aufbau}
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=0.40]{img/system.jpg} 
+\caption{Kommunikation im Recommendation System}
+\label{pic:system}
+\end{figure}
+Abbildung \ref{pic:system} zeigt den geplanten Aufbau des Systems.\\
+Grundlage ist ein auf Java basierender Kern, der den Zugriff auf Apache Spark und den Webserver ermöglicht. Die Machine Learning Bibliothek von Spark wird zu Beginn mit bestehenden Filmbewertungdsaten\citep{lit:INET4} trainiert. Diese werden aus einer CSV (Comma Seperated Value) Datei, welche aus dem Dateisystem gelesen wird, extrahiert.\\\\
+Filminformationen und Bewertungen werden anschließend über einen in Java implementierten Webserver bereitgestellt. Der Nutzer kann sich diese somit in seinem Browser anzeigen lassen. Tätigt er eine Auswahl oder bewertet selber Filme, werden diese Informationen an den Webserver übertragen, welcher sie wiederum an Spark weiterreicht. Hier werden nun anhand der Nutzerdaten passende Vorschläge für ihn generiert und wieder über den Webserver an den Nutzer ausgeliefert.
+
+
+\section{Messwerte Laufzeit}
+Im folgenden werden Messwerte bezüglich der Anzahl der verwendeten Cores und der Größe der initialen Datenmenge (MovieLens\citep{lit:INET4}) tabellarisch dargestellt.\\
+Zur Messung wurde Spark wie folgt konfiguriert:
+\begin{lstlisting}[caption=Beispiel für Spark Setup mit zwei Cores]
+SparkConf conf = new SparkConf().setAppName("Movie Recommendation");
+conf.setMaster("local[2]");
+sc = new JavaSparkContext(conf);
+\end{lstlisting}
+
+Die Messungen wurden unter Apple OSX 10.11.5 mit einem Intel Core i5 2,4 GHz und 8GB RAM durchgeführt.
+
+\begin{table}[h!]
+ \centering
+ \caption{Messwerte}
+ \label{tab:table1}
+ \begin{tabular}{ccc}
+   \toprule
+   Cores & ml-latest-small & ml-latest\\
+   \midrule
+   1 & 12,986 sec * , 13,048 sec ** & 520,255 sec **\\
+   2 & 17,288 sec * , 16,255 sec ** & 367,254 sec **\\
+   4 & 27,456 sec * , 26,448 sec ** & 417,246 sec **\\
+   \bottomrule
+ \end{tabular}
+\end{table}
+
+* Alle Filme mit einem Stern bewertet;
+** Alle Filme mit fünf Sternen bewertet

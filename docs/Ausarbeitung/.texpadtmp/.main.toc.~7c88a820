@@ -1,0 +1,55 @@
+\select@language {ngerman}
+\contentsline {chapter}{Abk\IeC {\"u}rzungsverzeichnis}{I}{section*.3}
+\contentsline {chapter}{Abbildungsverzeichnis}{II}{chapter*.5}
+\contentsline {chapter}{Codebeispielverzeichnis}{III}{chapter*.5}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Hintergrund und Ziele}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Aufbau der Arbeit}{3}{section.1.3}
+\contentsline {chapter}{\numberline {2}Stand der Technik}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Audiostreaming}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Mobilfunknetze}{4}{section.2.2}
+\contentsline {section}{\numberline {2.3}Codecs}{6}{section.2.3}
+\contentsline {chapter}{\numberline {3}Aufbau des Messsystems}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Vor\IeC {\"u}berlegungen zur Messmethode}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Server}{8}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Auswahl des Servers}{8}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Konfiguration des Servers}{8}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Besonderheit bei der Dauer einer TCP-Verbindung}{9}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Client}{10}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Konzeption der Applikation \glqq CellWalker\grqq }{10}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Logischer Ablauf des Streamings}{11}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Implementierung}{13}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Aufbau der Messprotokollierung}{17}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}\gls {view}Info Protokolleintrag und Beginn einer Messung}{17}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Synchroner Protokolleintrag}{18}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Asynchroner Protokolleintrag}{21}{subsection.3.4.3}
+\contentsline {chapter}{\numberline {4}Aufbau des Analysesystems}{22}{chapter.4}
+\contentsline {section}{\numberline {4.1}Architektur und Implementierung}{22}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Hauptprogramm}{23}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Ausgabemodul: Interaktive Karte}{24}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Ausgabemodul: Statistiken}{26}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Ausgabemodul: Graphen}{29}{subsection.4.1.4}
+\contentsline {section}{\numberline {4.2}Zusammenfassung und Bedienungsanleitung}{30}{section.4.2}
+\contentsline {chapter}{\numberline {5}Auswertung und Ergebnisse}{32}{chapter.5}
+\contentsline {section}{\numberline {5.1}Durchf\IeC {\"u}hrung der Messungen}{32}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Auswahl der Messstrecke}{32}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Parallele uns sequentielle Messung}{34}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Messplan}{35}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Steigerung der durchschnittlichen Downloadrate}{36}{subsection.5.1.4}
+\contentsline {section}{\numberline {5.2}Durchschnittliche Qualit\IeC {\"a}t des Streams in 2G und 3G Netzen}{37}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Auslastung des Puffers}{37}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Ausspielverhalten und Unterbrechungen}{39}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Dienstg\IeC {\"u}te in der Stadt, auf dem Land und auf der Autobahn}{42}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Auff\IeC {\"a}lligkeiten in den Messdaten}{44}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Unterbrechung in der Daten\IeC {\"u}bertragung}{44}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}\IeC {\"U}berg\IeC {\"a}nge zwischen Datennetzen (2G<->3G)}{45}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Zusammenfassung und Interpretation}{47}{section.5.4}
+\contentsline {chapter}{\numberline {6}Ausblick}{48}{chapter.6}
+\contentsline {chapter}{Eidesstattliche Erkl\IeC {\"a}rung}{50}{chapter.6}
+\contentsline {chapter}{Glossar}{51}{section*.28}
+\contentsline {chapter}{\numberline {A}Statistiken der Messfahrten}{54}{appendix.A}
+\contentsline {section}{\numberline {A.1}8 KBit/s Decoder - 30/5sec Puffer}{54}{section.A.1}
+\contentsline {section}{\numberline {A.2}16 KBit/s Decoder - 30/5sec Puffer}{56}{section.A.2}
+\contentsline {section}{\numberline {A.3}32 KBit/s Decoder - 30/5sec Puffer}{58}{section.A.3}
+\contentsline {section}{\numberline {A.4}64 KBit/s Decoder - 30/5sec Puffer}{60}{section.A.4}

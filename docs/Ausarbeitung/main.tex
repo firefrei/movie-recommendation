@@ -1,0 +1,113 @@
+%% Einfügen der Präambel
+\input{praeambel}
+
+%% Beginn mit Dokumenteninhalt
+\begin{document}
+
+%% Inhalt der Titelseite
+%\titlehead{Robuste Software für parallele Computerarchitekturen}
+%\subject{Projektausarbeitung}
+%\title{Fußball-Informationssystem mit Erlang/OTP Behaviour gen\_event}
+% \subtitle{Untertitel}
+%\publishers{Technischen Hochschule Georg Simon Ohm}
+%\author{Alesandro Lang \and Matthias Frei \and Klaus Schotsch}
+%\date{\today}
+
+%% Erstellung der Titelseite
+%\maketitle
+
+\input{deckblatt}
+\newpage
+
+%% Zusammenfassung
+%\input{abstract}
+%\newpage
+
+%% Erstellung des Inhhaltsverzeichnis
+\thispagestyle{plain}
+\tableofcontents
+\newpage
+
+%% Römische Nummerierung 
+\pagenumbering{Roman}
+
+%% Ausgabe Abkürzungsverzeichnis
+%\printglossary[type=\acronymtype,style=long,title=Abkürzungsverzeichnis,toctitle=Abkürzungsverzeichnis]
+
+%% Ausgabe des Abbildungsverzeichnis
+%\clearpage
+% Declare new goemetry for the title page only.
+%\newgeometry{left=3cm,right=2cm,top=1.7in,bottom=1.2in}
+%---------------------------------------------
+
+%\addtocontents{lof}{\protect\addcontentsline{toc}{section}{Abbildungsverzeichnis}}
+%\listoffigures
+
+% Ends the declared geometry for the titlepage
+%\restoregeometry
+%--------------------------
+
+
+%% Die Überschrift wird von Listing zu Quellcodeverzeichnis geändert
+%\renewcommand{\lstlistlistingname}{Codebeispielverzeichnis}
+%% Ausgabe eines Listingsverzeichnis
+%\addcontentsline{toc}{section}{Codebeispielverzeichnis}
+%\lstlistoflistings
+%\clearpage
+
+
+%% Arabische Nummerierung 
+\pagenumbering{arabic}
+
+%% Einbinung der Kapitel
+\input{L1}
+\newpage
+
+%% Anhang beginnt
+\appendix
+
+%% Eidesstattliche Erklärung
+%\addcontentsline{toc}{section}{Eidesstattliche Erklärung}
+%\input{eidesstattliche}
+%\newpage
+
+
+%% Ausgabe Glossar
+\printglossary[style=altlist,title=Glossar,toctitle=Glossar]
+
+%% Ausgabe des Symbolverzeichnis
+% \printglossary[type=symbolslist,style=long]
+
+
+%% Alle Quellen aus der bib Datei werden ins Verzeichnis aufgenommen auch wenn nicht zitiert
+\nocite{*}
+
+%%% Zweites Literaturverzeichnis z. B. für Bilder (Bildqellenverzeichnis)
+%% Beachte das Flag!! Stil der Bibliographie: Nach DIN und Verzeichnis in der Reihung des Auftretens, Referenzen nummerisch
+% \bibliographystyleB{unsrtdin}
+%% Beachte das Flag!! Auswahl der Bib Datei. Muss die Gleiche sein wie für das normale Literaturverzeichnis!
+%\bibliographyB{literatur}
+%% Zitierung im Text mit \citeB{lable} Beachte Flag!!
+% \renewcommand{\refname}{Bildquellenverzeichnis}
+
+%% Stil der Bibliographie: Nach DIN und Verzeichnis in der Reihung des Auftretens, Referenzen nummerisch
+\bibliographystyle{unsrtdin}
+
+%% Stil der Bibliographie: Nach DIN und Verzeichnis sortiert (Autor, Jahr) und Vorname gekürtzt; Referenzen nummerisch
+%\bibliographystyle{abbrvdin}
+
+%% Auswahl der Bib Datei
+\bibliography{literatur}
+
+%% Index soll Stichwortverzeichnis heissen
+\renewcommand{\indexname}{Stichwortverzeichnis}
+
+%% Ausgabe des Stichwortverzeichnisses (Index)
+\printindex
+
+
+%\input{appendix-auswertungen}
+\newpage
+
+%% Ende des Dokumenteninhalts
+\end{document}

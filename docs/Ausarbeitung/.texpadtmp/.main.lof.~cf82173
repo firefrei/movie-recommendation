@@ -1,0 +1,28 @@
+\select@language {ngerman}
+\addcontentsline {toc}{chapter}{Abbildungsverzeichnis}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Theoretische Downloadraten der Datennetztechnologien in KBit/s (Raten entnommen aus Quelle \citep {lit:Tec1})\relax }}{5}{figure.caption.7}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Fraunhofer \gls {abk:iis} \gls {abk:aac} \gls {codec}-Familie (vgl. Quelle \citep {lit:xhe})\relax }}{6}{figure.caption.8}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Logischer Aufbau des CellWalkers im \IeC {\"U}berblick\relax }}{11}{figure.caption.10}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Bildschirmfoto des CellWalkers mit einem 16 KBit/s Decoder, 30 Sekunden Puffer und einer Ausspielschwelle von 5 Sekunden\relax }}{15}{figure.caption.11}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Aufbau des CellWatchers im \IeC {\"U}berblick\relax }}{23}{figure.caption.12}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Funktionsweise der interaktiven Karte des CellWatchers. Die Informationen des rot umrandeten Punkts werden eingeblendet.\relax }}{25}{figure.caption.13}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Exemplarische CellWatcher Graphenausgabe von Rohdaten einer Messfahrt f\IeC {\"u}r Analysezwecke\relax }}{26}{figure.caption.14}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Histogramm der gemessenen Downloadraten bei Chunkgr\IeC {\"o}\IeC {\ss }en zwischen 8 und 40 KB\relax }}{29}{figure.caption.15}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Bildschirmfoto der gesamten Messstrecke durch die interaktive Karte des CellWatchers (Fahrtrichtung entlang der Pfeile)\relax }}{33}{figure.caption.16}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Vergleich von jeweils drei Fahrten mit sequentieller und paralleler Messung (Fahrzeit: ca. 2h; Medienbitrate: 16 KBit/s)\relax }}{34}{figure.caption.17}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Testplan der f\IeC {\"u}r die Auswertung relevanten Messfahrten\relax }}{35}{figure.caption.18}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Gemessene verf\IeC {\"u}gbare Downloadraten im Vergleich zur angeforderten Chunkgr\IeC {\"o}\IeC {\ss }e\relax }}{37}{figure.caption.19}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Histogramm \IeC {\"u}ber die Verteilung der Pufferauslastung ohne Ber\IeC {\"u}cksichtigung des Datennetzes\relax }}{38}{figure.caption.20}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Histogramm \IeC {\"u}ber die Verteilung der Pufferauslastung im 2G-Netz\relax }}{39}{figure.caption.21}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Histogramm \IeC {\"u}ber das Ausspielverhalten dargestellt durch Pufferunterl\IeC {\"a}ufe und Unterbrechungen\relax }}{40}{figure.caption.22}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Abstand zwischen zwei Ausspielstops im Durchschnitt\relax }}{41}{figure.caption.23}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Dauer einer Unterbrechung im Durchschnitt\relax }}{42}{figure.caption.24}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Beispiel f\IeC {\"u}r netzbedingte und \IeC {\"o}rtlich reproduzierbare Unterbrechung des Streams (Fahrtrichtung von oben kommend)\relax }}{45}{figure.caption.25}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Unterbrechung des 2G-Netzes durch ein besser ausgebautes Stadtgebiet (Fahrtrichtung von oben kommend)\relax }}{46}{figure.caption.26}
+\addvspace {10\p@ }
+\addvspace {10\p@ }

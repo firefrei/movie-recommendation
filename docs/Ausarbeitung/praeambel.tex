@@ -1,0 +1,151 @@
+%% Ermöglicht die Kompilierung durch Sublime Text von jeder *.tex Datei aus.
+%!TEX root = main.tex
+
+%%% PDF Erstellung mit Glossar
+%%% 1 . Kompilieren durch Sublime Tex
+%%% 2. Folgende Befehle im Terminal eingeben
+%%%	pdflatex main
+%%%	makeindex -s main.ist -t main.alg -o main.acr main.acn
+%%%	makeindex -s main.ist -t main.glg -o main.gls main.glo
+%%%	makeindex -s main.ist -t main.slg -o main.syi main.syg
+%%%	pdflatex main
+
+%%% Für schöneren Index wird die Datei index.ist benötigt. Im Terminmal "makeindex -g -s index.ist main" ausführen danach normal kompilieren (davor vielleicht auch schon mal).
+
+%%% Bei Beschreibungen für [] und {}: Durch Komma getrennte Beschreibungen zeigen auf die in [] optionalen Parameter. Nach Semikolon Beschreibungen für den Parameter in {}. Ohne Kommatas = allgemeine Beschreibung. Nur kommatas = Beschreibung der Optionen in [] oder {}.
+
+%% Schriftgröße 12, Format A4, Aufnahme des Abbildungsverzeichnis ins Inhaltsverzeichnis, Aufnahme des Literaturverzeichnis ins Inhaltsverzeichnis, Kapitel und Inhaltsverzeichnis u.a. beginnen auf der rechten Seite, Richtige Seitenzahl des Index im Inhaltsverzeichnis; Für längere Berichte u.a. Titel auf eigender Seite.
+%\documentclass[12pt,a4paper,liststotoc,bibtotoc,openright]{report}
+\documentclass[12pt,a4paper,liststotoc,bibtotoc,openright]{report}
+
+\usepackage{titlesec} % Textüberschriften anpassen
+% \titleformat{⟨Überschriftenklasse⟩}[Absatzformatierung⟩]{⟨Textformatierung⟩} {⟨Nummerierung⟩}{⟨Abstand zwischen Nummerierung und Überschriftentext⟩}{⟨Code vor der Überschrift⟩}[⟨Code nach der Überschrift⟩]
+
+%\titleformat{\chapter}[hang]{\large\bfseries}{\thechapter\quad}{0pt}{}
+\titleformat{\chapter}[display]   
+{\normalfont\huge\setstretch{0.35}}{\chaptertitlename\ \thechapter}{20pt}{\bfseries\Huge}   
+%\titleformat{\section}[hang]{\large\bfseries}{\thesection\quad}{0pt}{}
+%\titleformat{\subsection}[hang]{\large\bfseries}{\thesubsection\quad}{0pt}{}
+%\titleformat{\subsubsection}[hang]{\large\bfseries}{\thesubsubsection\quad}{0pt}{}
+%\titleformat{\paragraph}[hang]{\large\bfseries}{\theparagraph\quad}{0pt}{}
+
+% \titlespacing{⟨Überschriftenklasse⟩}{⟨Linker Einzug⟩}{⟨Platz oberhalb⟩}{⟨Platz unterhalb⟩}[⟨rechter Einzug⟩]
+
+%\titlespacing{\chapter}{0pt}{-6em}{6pt}
+\titlespacing*{\chapter}{0pt}{-60pt}{30pt}
+%\titlespacing{\section}{0pt}{6pt}{6pt}
+%\titlespacing{\subsection}{0pt}{6pt}{6pt}
+%\titlespacing{\subsubsection}{0pt}{6pt}{6pt}
+%\titlespacing{\paragraph}{0pt}{6pt}{6pt}
+
+
+% Deaktiviere leere Seite nach jedem Chapter
+\let\cleardoublepage\clearpage
+
+
+%% Korrekte Kodierung u.a. von Umlauten
+\usepackage[T1]{fontenc}
+
+%% Ermöglicht u.a. das direkte tippen von Umlauten; Plattformunabhängige Kodierung.
+\usepackage[utf8]{inputenc}
+
+%% Englische Rechtschreibung, Neue deutsche Rechtschreibung; u.a. übersetzt automatisch generierte Dokumentelemente in die deutsche Sprache
+\usepackage[english, ngerman]{babel}
+
+%% Schriftart Helvetica
+\usepackage{helvet}
+
+%% Seitenrand links=innen=3cm, rechts=außen=2cm 
+%\usepackage[left=3cm,right=2cm]{geometry}
+\usepackage[]{geometry}
+
+
+%% Zeilenabstand 1,5
+\usepackage[onehalfspacing]{setspace}
+
+% Schusterjungen und Hurenkinder vermeiden
+\clubpenalty = 10000
+\widowpenalty = 10000 
+\displaywidowpenalty = 10000
+
+% Überstehende Textteile verhindern
+\sloppy
+
+% Kopf- und Fußzeilen
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\automark[section]{chapter}
+
+
+\renewcommand{\headfont}{\normalfont} % Schriftform der Kopfzeile
+\ihead{\headmark}
+\chead{}
+\setlength{\headheight}{21mm} % Höhe der Kopfzeile
+%\setheadwidth[0pt]{textwithmarginpar}  % Kopfzeile über den Text hinaus verbreitern
+\setheadsepline[text]{0.4pt} % Trennlinie unter Kopfzeile
+
+\ifoot{}
+\cfoot{}
+\ofoot[\pagemark]{\pagemark}
+
+
+% Ermöglicht Tables
+\usepackage{booktabs}
+
+%% Ermöglicht Stichwortverzeichnisses (Index)
+\usepackage{makeidx}
+
+%% Stichwortverzeichnis (Index) erstellen
+\makeindex
+
+%% Ermöglicht die Einbindung von Grafiken
+\usepackage{graphicx}
+
+%% Ermöglicht Farben
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.925}
+
+%% Ermöglicht Listings
+\usepackage{listings} 
+
+%% Zeilennummer links, Zeilennummer-Größe tiny und Schriftart RM, Größe des Listing-Texts tiny und Schriftart RM, Titel unterhalb des Listings. Weiteres kann Einbindung des Listings definiert werden.
+\lstset{basicstyle=\ttfamily, numbers=left, breaklines=true, captionpos=b, language=python, frame=single, backgroundcolor=\color{light-gray}, showstringspaces=false} 
+
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Codebeispiel} % Listing -> Codebeispiel
+\usepackage[labelfont=bf]{caption} % Bezeichnung und Nummer fett
+
+%% Vermeidet die Umrandung von Links im PDF; Ermöglicht u.a. Umbrüche bei URLs und Erstellung Hyperlinks
+\usepackage[hidelinks]{hyperref}
+
+%% Erstellung eines Abkürzungsverzeichnis, Eintrag ins Inhaltsverzeichnis; Erstellung eines Glossar
+\usepackage[acronym,toc,nonumberlist]{glossaries}
+
+%% Nummerische Zitierung; Naturwissenschaftliches zitieren
+\usepackage[numbers]{natbib}
+
+%%% Zweites Literaturverzeichnis z. B. für Bilder (Bildqellenverzeichnis)
+%% Mehrere Literaturverzeichnisse
+% \usepackage{multibib}
+%% Definierung eines Flag, Name des Verzeichnis
+% \newcites{B}{Bildquellenverzeichnis}
+
+%% Ermöglicht einfache Darstellung von römischen Zahlen. Nutzung z.B. \RM{12} Wird ein . nach der Römischen Zahl benötigt muss der Teil #1{} so aussehen: #1{.}
+\newcommand{\RM}[1]{\MakeUppercase{\romannumeral #1{}}}
+
+%% Verkürzt den Abstand bei Benutzung von \chapter zum oberen Seitenrand
+\def\chapterheadstartvskip{\vspace*{-\normalbaselineskip}\vspace*{-\topskip}}
+
+%% Ein eigenes Symbolverzeichnis erstellen
+% \newglossary[slg]{symbolslist}{syi}{syg}{Symbolverzeichnis}
+ 
+%% Den Punkt am Ende jeder Beschreibung deaktivieren (Damit nicht zwei platziert werden wenn man bei der Beschreibung einen setzt)
+\renewcommand*{\glspostdescription}{}
+
+%% Glossar-Befehle aktivieren
+\glsaddall
+\makeglossaries
+
+%% Bindet die Verwendeteten Glossar-Labels ein
+\include{glossar}

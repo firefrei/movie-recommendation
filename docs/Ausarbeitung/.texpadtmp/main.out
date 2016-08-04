@@ -1,0 +1,14 @@
+\BOOKMARK [0][-]{chapter.1}{Einleitung}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Apache Spark}{}% 2
+\BOOKMARK [0][-]{chapter.3}{Collaborative Filtering und ALS}{}% 3
+\BOOKMARK [1][-]{subsection.3.0.1}{Umsetzung}{chapter.3}% 4
+\BOOKMARK [0][-]{chapter.4}{Benutzerschnittstelle}{}% 5
+\BOOKMARK [1][-]{section.4.1}{Client}{chapter.4}% 6
+\BOOKMARK [2][-]{subsection.4.1.1}{Funktionalit\344ten}{section.4.1}% 7
+\BOOKMARK [2][-]{subsection.4.1.2}{Technische Umsetzung}{section.4.1}% 8
+\BOOKMARK [1][-]{section.4.2}{Server}{chapter.4}% 9
+\BOOKMARK [2][-]{subsection.4.2.1}{Statische Dateien}{section.4.2}% 10
+\BOOKMARK [2][-]{subsection.4.2.2}{Laden des Spark-Frameworks}{section.4.2}% 11
+\BOOKMARK [2][-]{subsection.4.2.3}{Beschreibung der REST-Schnittstelle}{section.4.2}% 12
+\BOOKMARK [0][-]{chapter.5}{Systemkommunikation}{}% 13
+\BOOKMARK [1][-]{section.5.1}{Messwerte Laufzeit}{chapter.5}% 14

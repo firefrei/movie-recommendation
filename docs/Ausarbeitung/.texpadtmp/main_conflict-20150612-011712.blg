@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: /Users/mat/ownCloud/Uni/U_DB-Problemseminar/Ausarbeitung/.texpadtmp/main.aux
+The style file: unsrtdin.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: ../literatur.bib
+Warning--I didn't find a database entry for "lit:Tec1"
+Warning--I didn't find a database entry for "lit:xhe"
+You've used 3 entries,
+            4011 wiz_defined-function locations,
+            796 strings with 5885 characters,
+and the built_in function-call counts, 786 in all, are:
+= -- 62
+> -- 12
+< -- 23
++ -- 26
+- -- 4
+* -- 34
+:= -- 125
+add.period$ -- 4
+call.type$ -- 3
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 3
+duplicate$ -- 29
+empty$ -- 88
+format.name$ -- 9
+if$ -- 171
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 13
+newline$ -- 26
+num.names$ -- 3
+pop$ -- 15
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 46
+stack$ -- 0
+substring$ -- 22
+swap$ -- 6
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 6
+width$ -- 4
+write$ -- 44
+(There were 2 warnings)

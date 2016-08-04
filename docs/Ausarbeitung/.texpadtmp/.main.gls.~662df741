@@ -1,0 +1,38 @@
+\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
+\begin{theglossary}\glossaryheader
+\glsgroupheading{B}\relax \glsresetentrylist %
+\glossaryentryfield{backbone}{\glsnamefont{Backbone}}{Zentrales Computernetzwerk des Internetanbieters über welches der Datenverkehr geleitet wird}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{5}}}\glsgroupskip
+\glsgroupheading{C}\relax \glsresetentrylist %
+\glossaryentryfield{chunk}{\glsnamefont{Chunk}}{Zusammenhängender Teil einer Datei, welcher durch zwei Byte-Positionen spezifiziert wird}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{4}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{7}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{11\delimR 13}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{16}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{19}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{36}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{48}}}%
+\glossaryentryfield{codec}{\glsnamefont{Codec}}{Algorithmus zur Digitalisierung eines Audiosignals}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{2\delimN 3}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{6}}}\glsgroupskip
+\glsgroupheading{H}\relax \glsresetentrylist %
+\glossaryentryfield{header}{\glsnamefont{Header}}{Kopf einer Nachricht, der Meta-Informationen für den Empfänger beinhaltet}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{8}}}\glsgroupskip
+\glsgroupheading{M}\relax \glsresetentrylist %
+\glossaryentryfield{medienbitrate}{\glsnamefont{Medienbitrate}}{Bitrate des \gls {codec}s mit der ein Audiosignal codiert wurde}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{1}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{34\delimR 44}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{47\delimN 48}}}\glsgroupskip
+\glsgroupheading{T}\relax \glsresetentrylist %
+\glossaryentryfield{thread}{\glsnamefont{Thread}}{Zum Hauptprogramm nebenläufiger Prozess}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{11}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{14}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{16}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{31}}}%
+\glossaryentryfield{timeout}{\glsnamefont{Timeout}}{Zeit, die gewartet wird, bevor eine aktuell ausgeführte Aktion abgebrochen wird}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{9}}}\glsgroupskip
+\glsgroupheading{V}\relax \glsresetentrylist %
+\glossaryentryfield{view}{\glsnamefont{View}}{Spezielle Anzeigemaske einer Anwendung}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{13\delimN 14}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{17}}}%
+\end{theglossary}\glossarypostamble
